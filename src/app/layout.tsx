@@ -25,9 +25,9 @@ export const metadata: Metadata = {
     url: "https://4lph7.me",
     title: "ARUL G / 4LPH7",
     description: "Application security, cryptography, and practical software.",
-    images: [{ url: "/og.svg", width: 1200, height: 630, alt: "4LPH7 engineering portfolio" }],
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "4LPH7 engineering portfolio" }],
   },
-  twitter: { card: "summary_large_image", images: ["/og.svg"] },
+  twitter: { card: "summary_large_image", images: ["/og.png"] },
   icons: { icon: "/favicon.svg", apple: "/splash.png" },
 };
 
