@@ -2,7 +2,7 @@ import { access, readFile, readdir } from "node:fs/promises";
 import path from "node:path";
 
 const root = path.resolve("out");
-const required = ["index.html", "404.html", "resume/index.html", "favicon.svg", "og.svg", "robots.txt", "sitemap.xml"];
+const required = ["index.html", "404.html", "resume/index.html", "favicon.svg", "og.png", "robots.txt", "sitemap.xml"];
 for (const file of required) {
   await access(path.join(root, file));
 }
