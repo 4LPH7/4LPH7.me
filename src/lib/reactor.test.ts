@@ -1,9 +1,21 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { BOOT, IGNITE, reactorPower, SHUTDOWN, STANDBY, SWEEP } from "./reactor.ts";
+import {
+	BOOT,
+	IGNITE,
+	reactorPower,
+	SHUTDOWN,
+	STANDBY,
+	SWEEP,
+} from "./reactor.ts";
 
 test("a powered reactor that has finished booting runs steady at full power", () => {
-	assert.deepEqual(reactorPower(true, BOOT + 1), { level: 1, flash: 0, sweep: -1, shock: -1 });
+	assert.deepEqual(reactorPower(true, BOOT + 1), {
+		level: 1,
+		flash: 0,
+		sweep: -1,
+		shock: -1,
+	});
 });
 
 test("booting starts by flickering, never fully on", () => {
@@ -14,7 +26,7 @@ test("booting starts by flickering, never fully on", () => {
 	}
 });
 
-test("ignition flashes once and sends out a shockwave", () => {
+test("ignition flashes once and lets off an electric discharge", () => {
 	const at = reactorPower(true, IGNITE);
 	assert.equal(at.flash, 1);
 	assert.equal(at.shock, 0);
@@ -37,7 +49,12 @@ test("shutting down flares briefly, then drains to the standby ember", () => {
 	assert.ok(reactorPower(false, 0.05).level > 1, "a last flare");
 	const mid = reactorPower(false, SHUTDOWN / 2);
 	assert.ok(mid.level < 1 && mid.level > STANDBY);
-	assert.deepEqual(reactorPower(false, SHUTDOWN + 1), { level: STANDBY, flash: 0, sweep: -1, shock: -1 });
+	assert.deepEqual(reactorPower(false, SHUTDOWN + 1), {
+		level: STANDBY,
+		flash: 0,
+		sweep: -1,
+		shock: -1,
+	});
 });
 
 test("before any change (or with a bad time) it rests in its current state", () => {
