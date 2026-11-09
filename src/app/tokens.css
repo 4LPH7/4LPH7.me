@@ -138,3 +138,16 @@
 :root[data-theme="light"] {
   --loader-invert: 1;
 }
+
+:root {
+  --map-land: #4b4b55;
+  --map-water: #62626e;
+  --map-ink: #f4f4f5;
+  --map-ink-inverse: #09090b;
+}
+:root[data-theme="light"] {
+  --map-land: #b8c4d6;
+  --map-water: #a8b6cc;
+  --map-ink: #0b1220;
+  --map-ink-inverse: #f4f4f5;
+}

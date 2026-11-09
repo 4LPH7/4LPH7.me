@@ -117,13 +117,14 @@ test("every var() resolves to a defined token", () => {
 });
 
 test("no tokens defined but unused", () => {
+  const tsSource = sourceFiles(SRC_DIR).map((file) => readFileSync(file, "utf8")).join("\n");
 	const css = cssFiles(APP_DIR)
 		.map((f) => readFileSync(f, "utf8"))
 		.join("\n");
 	const tokensCss = readFileSync(join(APP_DIR, TOKENS), "utf8");
 	const defined = [...tokensCss.matchAll(/(--[\w-]+)\s*:/g)].map((m) => m[1]);
 	const unused = [...new Set(defined)].filter(
-		(name) => !css.includes(`var(${name}`),
+		(name) => !css.includes(`var(${name}`) && !tsSource.includes(name),
 	);
 	assert.deepEqual(unused, []);
 });

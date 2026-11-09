@@ -28,7 +28,7 @@
 .b-player { grid-column: 1 / span 2; }
 .b-flip { grid-column: 3; }
 
-.deck { height: 100%; padding: var(--space-4) !important; display: flex; flex-direction: column; gap: var(--space-4); background: linear-gradient(var(--deck-top), var(--surface)); }
+.deck { height: 100%; padding: var(--space-4) !important; display: flex; flex-direction: column; gap: var(--space-4); background: linear-gradient(180deg, var(--deck-top), var(--surface)); }
 .deck-stage { position: relative; height: clamp(196px, 24vw, 232px); border-radius: var(--radius-lg); background: radial-gradient(120% 90% at 50% 0%, var(--deck-stage-hi), var(--deck-stage-mid) 60%, var(--deck-stage-low)); overflow: hidden; display: grid; place-items: center; box-shadow: inset 0 2px 12px color-mix(in srgb, var(--shade) 60%, transparent), inset 0 0 0 1px color-mix(in srgb, var(--on-accent) 5%, transparent); }
 .deck-stage::before { content: ""; position: absolute; inset: -25%; background: var(--deck-cover) center / cover; filter: blur(34px) saturate(1.15); opacity: .32; pointer-events: none; }
 .deck-viz { position: absolute; inset: 0; pointer-events: none; }
@@ -45,7 +45,7 @@
 .deck-label:empty::after { content: ""; position: absolute; width: 9%; aspect-ratio: 1; border-radius: var(--radius-round); background: var(--deck-spindle); box-shadow: 0 0 0 1px color-mix(in srgb, var(--on-accent) 10%, transparent); }
 .deck-arm { position: absolute; left: calc(var(--r) * 1.05); top: calc(var(--r) * 0.05 - 3px); z-index: var(--z-local); width: calc(var(--r) * 1.2); height: 6px; pointer-events: none; transform-origin: right center; transform: rotate(var(--arm, -100deg)); transition: transform var(--dur-reveal) var(--ease-out); }
 .deck-arm::before { content: ""; position: absolute; inset: 0; border-radius: var(--radius-sm); background: linear-gradient(90deg, var(--arm-hi), var(--ink-dim)); box-shadow: 0 3px 6px color-mix(in srgb, var(--shade) 47%, transparent); }
-.deck-arm::after { content: ""; position: absolute; left: -4px; top: -3px; width: 14px; height: 12px; border-radius: var(--radius-sm); background: linear-gradient(var(--arm-lo), var(--ink-soft)); box-shadow: 0 2px 5px color-mix(in srgb, var(--shade) 53%, transparent); }
+.deck-arm::after { content: ""; position: absolute; left: -4px; top: -3px; width: 14px; height: 12px; border-radius: var(--radius-sm); background: linear-gradient(180deg, var(--arm-lo), var(--ink-soft)); box-shadow: 0 2px 5px color-mix(in srgb, var(--shade) 53%, transparent); }
 .deck-arm i { position: absolute; right: -11px; top: -8px; width: 22px; height: 22px; border-radius: var(--radius-round); background: radial-gradient(circle at 35% 30%, var(--arm-hi), var(--ink-dim)); box-shadow: 0 2px 6px color-mix(in srgb, var(--shade) 53%, transparent), 0 0 0 4px color-mix(in srgb, var(--shade) 15%, transparent); }
 .deck-cue { position: absolute; bottom: 10px; padding: var(--space-1) var(--space-3); border-radius: var(--radius-2xl); background: var(--deck-cue-bg); font: 700 11px var(--font-mono); letter-spacing: .2em; color: color-mix(in srgb, var(--on-accent) 50%, transparent); pointer-events: none; transition: opacity var(--dur-base), transform var(--dur-base) var(--ease-out); }
 .deck[data-playing="true"] .deck-cue { opacity: 0; transform: translateY(6px); }
