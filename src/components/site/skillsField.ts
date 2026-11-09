@@ -1,3 +1,4 @@
+import { refreshSkillTokens } from "./skillsDraw";
 import { cssVar } from "@/lib/theme";
 import { burst, hit, repel } from "@/lib/bubbles";
 import { type Blob, jiggle, makeBlob, shapeFoam, stepFoam } from "@/lib/foam";
@@ -146,7 +147,7 @@ export function createSkillField(host: HTMLElement, cv: HTMLCanvasElement, skill
     if (focus >= 0) bubble(focus);
     drawRipples(ctx, ripples, now);
     drawDrops(ctx, drops, dt);
-    if (hover >= 0 && held < 0) drawChip(ctx, blobs[hover], cats[hover].toUpperCase(), light, chip);
+    if (hover >= 0 && held < 0) drawChip(ctx, blobs[hover], cats[hover].toUpperCase(), chip);
   };
 
   /** Hover target, swell, focus fade and chip; eased by `k` (1 = jump straight there). */
@@ -278,7 +279,7 @@ export function createSkillField(host: HTMLElement, cv: HTMLCanvasElement, skill
     if (reduced) { settleStatic(); redraw(); }
   });
   ro.observe(host);
-  const mo = new MutationObserver(() => { light = document.documentElement.dataset.theme === "light"; if (reduced) redraw(); });
+  const mo = new MutationObserver(() => { light = document.documentElement.dataset.theme === "light"; refreshSkillTokens(); if (reduced) redraw(); });
   mo.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
   const io = new IntersectionObserver(([entry]) => {
     visible = entry.isIntersecting;

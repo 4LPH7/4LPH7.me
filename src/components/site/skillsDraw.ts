@@ -1,3 +1,4 @@
+import { cssVar } from "@/lib/theme";
 import { MONO } from "@/app/fonts";
 import { skillIcons } from "@/data/skillIcons";
 import { type Blob, RIM, RIM_DIRS } from "@/lib/foam";
@@ -10,11 +11,11 @@ const icons = Object.fromEntries(
 
 export const tintOf = (name: string, light: boolean) => {
   const c = icons[name]?.color;
-  return c && c !== "#FFFFFF" ? c : light ? "#18181b" : "#a1a1aa";
+  return c && c !== "currentColor" ? c : tok(light ? "--skill-tint-light" : "--skill-tint-dark");
 };
 
 /** Soap-film hues for the drifting sheen inside each rim. */
-const FILM = ["#f472b6", "#60a5fa", "#5eead4", "#fde047", "#c084fc", "#f472b6"];
+const FILM = ["--film-pink", "--film-blue", "--film-teal", "--film-yellow", "--film-violet", "--film-pink"];
 
 const hex = (a: number) => Math.round(Math.max(0, Math.min(1, a)) * 255).toString(16).padStart(2, "0");
 
@@ -50,8 +51,8 @@ export function drawBubble(ctx: CanvasRenderingContext2D, b: Blob, o: Look) {
   ctx.globalAlpha = o.alpha;
   outline(ctx, b);
   const g = ctx.createRadialGradient(b.x - r * 0.35, b.y - r * 0.4, r * 0.1, b.x, b.y, r * 1.05);
-  g.addColorStop(0, o.light ? "#ffffff" : o.lift > 0.01 ? "#2f2f38" : "#26262c");
-  g.addColorStop(0.66, o.light ? "#eef2fa" : "#121217");
+  g.addColorStop(0, o.light ? tok("--skill-face-top") : o.lift > 0.01 ? tok("--skill-face-lift") : tok("--skill-face-top"));
+  g.addColorStop(0.66, tok("--skill-face-mid"));
   g.addColorStop(1, `${tint}${o.light ? "44" : hex(0.25 + glow * 0.25)}`);
   ctx.fillStyle = g;
   ctx.shadowColor = `${tint}${hex(0.33 + glow * 0.35)}`;
@@ -67,7 +68,7 @@ export function drawBubble(ctx: CanvasRenderingContext2D, b: Blob, o: Look) {
   ctx.clip();
   if ("createConicGradient" in ctx) {
     const film = ctx.createConicGradient(o.t * 0.4 + b.x * 0.01, b.x, b.y);
-    FILM.forEach((c, i) => { film.addColorStop(i / (FILM.length - 1), `${c}${o.light ? "30" : "26"}`); });
+    FILM.forEach((c, i) => { film.addColorStop(i / (FILM.length - 1), `${tok(c)}${o.light ? "30" : "26"}`); });
     ctx.strokeStyle = film;
     ctx.lineWidth = 8;
     ctx.stroke();
@@ -93,18 +94,18 @@ export function drawBubble(ctx: CanvasRenderingContext2D, b: Blob, o: Look) {
     ctx.save();
     ctx.translate(b.x - sz / 2, b.y - sz * 0.72 - o.lift * r * 0.07);
     ctx.scale(sz / 24, sz / 24);
-    ctx.fillStyle = icon.color === "#FFFFFF" ? (o.light ? "#0b1220" : "#ffffff") : icon.color;
+    ctx.fillStyle = icon.color === "currentColor" ? tok("--skill-icon-white") : icon.color;
     ctx.fill(icon.path);
     ctx.restore();
   }
-  ctx.fillStyle = o.light ? "#0b1220" : o.lift > 0.3 ? "#ffffff" : "#e4e4e7";
+  ctx.fillStyle = o.light ? tok("--skill-ink") : o.lift > 0.3 ? tok("--skill-icon-white") : tok("--skill-icon-fallback");
   ctx.font = `600 ${Math.max(9, r * 0.2)}px Supreme, system-ui, sans-serif`;
   ctx.fillText(o.name, b.x, b.y + r * 0.42);
   ctx.restore();
 }
 
 /** A small pill above the hovered bubble naming its category. */
-export function drawChip(ctx: CanvasRenderingContext2D, b: Blob, text: string, light: boolean, alpha: number) {
+export function drawChip(ctx: CanvasRenderingContext2D, b: Blob, text: string, alpha: number) {
   if (alpha < 0.02) return;
   ctx.save();
   ctx.globalAlpha = alpha;
@@ -114,9 +115,9 @@ export function drawChip(ctx: CanvasRenderingContext2D, b: Blob, text: string, l
   const y = Math.max(6, b.y - b.r - 30 - (1 - alpha) * 6);
   ctx.beginPath();
   ctx.roundRect(x, y, w, 20, 10);
-  ctx.fillStyle = light ? "#0b1220" : "#f4f4f5";
+  ctx.fillStyle = tok("--skill-ink");
   ctx.fill();
-  ctx.fillStyle = light ? "#f4f4f5" : "#09090b";
+  ctx.fillStyle = tok("--skill-ink-inverse");
   ctx.fillText(text, b.x, y + 10.5);
   ctx.restore();
 }
@@ -176,4 +177,20 @@ export function drawPull(ctx: CanvasRenderingContext2D, x: number, y: number, ch
     ctx.stroke();
   }
   ctx.restore();
+}
+
+const tokenCache = new Map<string, string>();
+
+/** Clears cached token colours; call when the theme changes. */
+export function refreshSkillTokens(): void {
+  tokenCache.clear();
+}
+
+/** A CSS token's current value, read once per theme (never per frame). */
+function tok(name: string): string {
+  const hit = tokenCache.get(name);
+  if (hit !== undefined) return hit;
+  const value = cssVar(name);
+  tokenCache.set(name, value);
+  return value;
 }

@@ -151,3 +151,28 @@
   --map-ink: #0b1220;
   --map-ink-inverse: #f4f4f5;
 }
+
+:root {
+  --skill-tint-dark: #a1a1aa;
+  --skill-tint-light: #18181b;
+  --skill-face-top: #26262c;
+  --skill-face-lift: #2f2f38;
+  --skill-face-mid: #121217;
+  --skill-ink: #f4f4f5;
+  --skill-ink-inverse: #09090b;
+  --skill-icon-white: #ffffff;
+  --skill-icon-fallback: #e4e4e7;
+  --film-pink: #f472b6;
+  --film-blue: #60a5fa;
+  --film-teal: #5eead4;
+  --film-yellow: #fde047;
+  --film-violet: #c084fc;
+}
+:root[data-theme="light"] {
+  --skill-face-top: #ffffff;
+  --skill-face-lift: #ffffff;
+  --skill-face-mid: #eef2fa;
+  --skill-ink: #0b1220;
+  --skill-ink-inverse: #f4f4f5;
+  --skill-icon-white: #0b1220;
+}
