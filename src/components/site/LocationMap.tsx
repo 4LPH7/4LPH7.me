@@ -54,7 +54,7 @@ export function LocationMap() {
       light = document.documentElement.dataset.theme === "light";
       const cs = getComputedStyle(document.documentElement);
       accent = cs.getPropertyValue("--accent").trim() || "#3b82f6";
-      dim = cs.getPropertyValue("--dim").trim() || dim;
+      dim = cs.getPropertyValue("--ink-dim").trim() || dim;
     };
 
     /** The world's dots never change for a given size and theme, so they are drawn once into a cache. */

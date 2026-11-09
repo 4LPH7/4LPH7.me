@@ -74,7 +74,9 @@ test("no font size below 11px", () => {
 test("next/font variables use the --nf prefix and tokens.css maps --font-* onto them", () => {
 	const fonts = readFileSync(join(SRC_DIR, "app", "fonts.ts"), "utf8");
 	const tokensCss = readFileSync(join(APP_DIR, TOKENS), "utf8");
-	const fontVars = [...fonts.matchAll(/variable: "(--[\w-]+)"/g)].map((m) => m[1]);
+	const fontVars = [...fonts.matchAll(/variable: "(--[\w-]+)"/g)].map(
+		(m) => m[1],
+	);
 	const legacy = fontVars.filter((name) => !name.startsWith("--nf-"));
 	assert.deepEqual(legacy, []);
 	assert.match(tokensCss, /--font-serif:\s*var\(--nf-serif\)/);
@@ -87,13 +89,17 @@ test("every var() resolves to a defined token", () => {
 		.join("\n");
 	// next/font injects --nf-* variables at runtime, so they count as defined here.
 	const fonts = readFileSync(join(SRC_DIR, "app", "fonts.ts"), "utf8");
-	const injected = [...fonts.matchAll(/variable: "(--[\w-]+)"/g)].map((m) => m[1]);
+	const injected = [...fonts.matchAll(/variable: "(--[\w-]+)"/g)].map(
+		(m) => m[1],
+	);
 	const defined = new Set([
 		...[...all.matchAll(/(--[\w-]+)\s*:/g)].map((m) => m[1]),
 		...injected,
 	]);
 	const used = [...all.matchAll(/var\((--[\w-]+)/g)].map((m) => m[1]);
-	const missing = [...new Set(used.filter((name) => !defined.has(name)))];
+	// Set at runtime from TSX (element.style), so no CSS declaration exists for them.
+const SET_FROM_JS = new Set(["--reveal-delay", "--lean", "--x", "--deck-cover", "--arm", "--deck-tint", "--fill", "--i"]);
+const missing = [...new Set(used.filter((name) => !defined.has(name) && !SET_FROM_JS.has(name)))];
 	assert.deepEqual(missing, []);
 });
 
