@@ -69,7 +69,7 @@ button {
 }
 
 .skip-link {
-  z-index: 100;
+  z-index: var(--z-skip);
   background: var(--accent);
   color: var(--on-accent);
   padding: .75rem 1rem;
@@ -264,7 +264,7 @@ button {
 }
 
 [data-reveal-state] {
-  transition: opacity .7s cubic-bezier(.2, .8, .2, 1), transform .7s cubic-bezier(.2, .8, .2, 1);
+  transition: opacity var(--dur-slow) cubic-bezier(.2, .8, .2, 1), transform var(--dur-slow) cubic-bezier(.2, .8, .2, 1);
   transition-delay: var(--reveal-delay, 0s);
 }
 

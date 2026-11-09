@@ -11,7 +11,6 @@
   --accent: #3b82f6;
   --accent-strong: #60a5fa;
   --accent-deep: #1e3a8a;
-  --accent-wash: #1e3a8a44;
   --on-accent: #ffffff;
   --inverse: #ffffff;
   --on-inverse: #09090b;
@@ -27,10 +26,7 @@
   --terminal-dim: #a1a1aa;
   --terminal-line: #ffffff26;
   --shadow-lift: 0 10px 30px -10px #3b82f6aa;
-  --shadow-card-hover: 0 18px 40px -24px #3b82f680;
   --shadow-focus: 0 0 0 3px #3b82f640;
-  --shadow-inset: inset 0 0 0 1px #ffffff12;
-  --shadow-deep: 0 12px 30px #000000bb;
   --font-sans: ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--nf-serif), Georgia, serif;
   --font-mono: var(--nf-mono), ui-monospace, Consolas, monospace;
@@ -64,7 +60,6 @@
   --z-skip: 100;
   --z-loader: 200;
   --ease-out: cubic-bezier(.22, 1, .36, 1);
-  --ease-swap: cubic-bezier(.65, 0, .35, 1);
   --dur-fast: .2s;
   --dur-base: .35s;
   --dur-slow: .6s;
@@ -86,7 +81,6 @@
   --ink-dim: #5b6b82;
   --accent: #1d4ed8;
   --accent-strong: #1e40af;
-  --accent-wash: #1d4ed81a;
   --inverse: #0b1220;
   --on-inverse: #ffffff;
   --success: #15803d;
@@ -94,7 +88,53 @@
   --grid-dot: #0b122014;
   --grid-line: #0b12200a;
   --shadow-lift: 0 10px 30px -10px #1d4ed866;
-  --shadow-card-hover: 0 18px 40px -24px #1d4ed855;
   --shadow-focus: 0 0 0 3px #1d4ed833;
-  --shadow-inset: inset 0 0 0 1px #0b12201a;
+}
+
+:root {
+  --shade: #000000;
+  --paper: #ffffff;
+  --hero-glow: #1e3a8a66;
+  --holo-cyan: #22d3ee;
+  --orb-indigo: #3730a3;
+  --orb-violet: #4f46e5;
+  --orb-core: #12122a;
+  --orb-edge: #08081a;
+  --orb-deep: #030308;
+  --orb-static-hi: #6b6b80;
+  --orb-static-mid: #16161f;
+  --orb-static-dark: #050507;
+  --robot-glow: #0c1a2a;
+  --robot-bg: #070b14;
+  --robot-bg-deep: #040508;
+  --lan-strap: #27272a;
+  --lan-card: #e9e9e6;
+  --arm-hi: #d4d4d8;
+  --arm-lo: #e4e4e7;
+  --deck-top: #1c1c20;
+  --deck-stage-hi: #34343a;
+  --deck-stage-mid: #222226;
+  --deck-stage-low: #19191c;
+  --deck-groove: #111113;
+  --deck-groove-2: #1d1d21;
+  --deck-spindle: #0c0c0e;
+  --deck-cue-bg: #0b0b0db3;
+  --foot-top: #0b0d14;
+  --foot-bottom: #050506;
+}
+:root[data-theme="light"] {
+  --hero-glow: #3b82f633;
+  --deck-top: #f4f7fc;
+  --deck-stage-hi: #f1f4f9;
+  --deck-stage-mid: #e6ebf4;
+  --deck-stage-low: #dde4ef;
+  --deck-cue-bg: #ffffffcc;
+  --foot-top: #ffffff;
+  --foot-bottom: #eef2fa;
+}
+:root {
+  --loader-invert: 0;
+}
+:root[data-theme="light"] {
+  --loader-invert: 1;
 }
