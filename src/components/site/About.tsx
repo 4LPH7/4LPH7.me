@@ -80,7 +80,7 @@ export function About() {
                 return <li key={s.label}><a className="icon-btn" href={s.href} target="_blank" rel="noreferrer" aria-label={s.label}><Icon size={17} strokeWidth={1.6} aria-hidden="true" /></a></li>;
               })}
             </ul>
-            <a className="profile-mail" href={`mailto:${site.email}`}>
+            <a className="profile-mail text-link-quiet" href={`mailto:${site.email}`}>
               <Mail size={15} aria-hidden="true" /> <span className="profile-mail-full">{site.email}</span><span className="profile-mail-short">Email me</span>
               <ArrowUpRight size={14} aria-hidden="true" />
             </a>
@@ -110,7 +110,7 @@ export function About() {
           {site.about.offKeyboard.map((c, i) => {
             const Icon = offIcons[i] ?? Monitor;
             return (
-              <li key={c.number} className="card off-card" data-reveal>
+              <li key={c.number} className="card card-interactive off-card" data-reveal>
                 <span className="off-icon" aria-hidden="true"><Icon size={16} strokeWidth={1.6} /></span>
                 <h4>{c.title}</h4>
                 <p>{c.detail}</p>

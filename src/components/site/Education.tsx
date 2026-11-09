@@ -46,8 +46,8 @@ export function Education() {
           return (
             <li key={e.stage} className={`tl-item${n % 2 ? " is-right" : ""}`}>
               <span className="tl-node" aria-hidden="true"><Icon size={15} strokeWidth={1.6} /></span>
-              <article className="tl-card card" data-reveal>
-                <div className="tl-card-top">
+              <article className="tl-card card-interactive card" data-reveal>
+                <div className="tl-card card-interactive-top">
                   <p className="eyebrow">{e.stage}</p>
                   <p className="tl-label mono">{e.label}</p>
                 </div>

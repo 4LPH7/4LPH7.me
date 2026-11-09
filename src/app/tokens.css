@@ -198,3 +198,10 @@
   --k2so-eye: #9ff6ff;
   --robot-ground: #0b1220;
 }
+
+:root {
+  --shadow-card-hover: 0 18px 40px -24px #3b82f680;
+}
+:root[data-theme="light"] {
+  --shadow-card-hover: 0 18px 40px -24px #1d4ed855;
+}

@@ -57,8 +57,7 @@
 .chapter > p:last-child { max-width: 46ch; color: var(--ink-dim); line-height: 1.85; }
 .about-sub { margin: var(--space-24) 0 var(--space-8); }
 .off-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4); }
-.off-card { padding: var(--space-5); transition: border-color var(--dur-base), transform var(--dur-base) var(--ease-out); }
-.off-card:hover { border-color: color-mix(in srgb, var(--accent) 33%, transparent); transform: translateY(-3px); }
+.off-card { padding: var(--space-5); }
 .off-icon { display: grid; place-items: center; width: 36px; height: 36px; border-radius: var(--radius-sm); border: 1px solid var(--line); background: var(--surface-raised); color: var(--accent-strong); }
 .off-card h4 { margin: var(--space-6) 0 var(--space-3); font-weight: 600; font-size: 14px; }
 .off-card p { color: var(--ink-dim); font-size: 13px; line-height: 1.85; }
@@ -112,8 +111,7 @@
 .tl-item.is-right .tl-year { order: 1; text-align: right; justify-self: end; }
 .tl-node { position: absolute; left: 50%; top: 40px; transform: translateX(-50%); z-index: var(--z-local); width: 36px; height: 36px; display: grid; place-items: center; border-radius: var(--radius-round); background: var(--bg); border: 1px solid var(--line); color: var(--ink-dim); transition: color var(--dur-base), border-color var(--dur-base), box-shadow var(--dur-base); }
 .tl-item.is-on .tl-node { color: var(--accent-strong); border-color: color-mix(in srgb, var(--accent) 67%, transparent); box-shadow: 0 0 22px color-mix(in srgb, var(--accent) 67%, transparent); }
-.tl-card { padding: var(--space-8); transition: transform var(--dur-base) var(--ease-out), border-color var(--dur-base); }
-.tl-card:hover { transform: translateY(-4px); border-color: color-mix(in srgb, var(--accent) 27%, transparent); }
+.tl-card { padding: var(--space-8); }
 .tl-card-top { display: flex; justify-content: space-between; align-items: center; gap: var(--space-3); }
 .tl-label { font-size: 11px; font-weight: 700; letter-spacing: .25em; color: var(--accent-strong); padding: var(--space-2) var(--space-3); border-radius: var(--radius-2xl); border: 1px solid color-mix(in srgb, var(--accent) 33%, transparent); background: color-mix(in srgb, var(--accent-deep) 20%, transparent); }
 .tl-card h3 { margin: var(--space-10) 0 var(--space-3); font: 400 2.1rem/1.05 var(--font-serif); }

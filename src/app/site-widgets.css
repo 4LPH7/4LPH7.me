@@ -76,7 +76,7 @@
   .deck-ctl { justify-content: space-between; }
 }
 .deck-status { font-size: 11px; color: var(--danger); min-height: 0; }
-.range { appearance: none; height: 3px; border-radius: var(--radius-2xl); background: linear-gradient(90deg, var(--ink) var(--fill, 0%), var(--line) var(--fill, 0%)); cursor: pointer; }
+.range { appearance: none; height: 3px; border-radius: var(--radius-2xl); background: linear-gradient(90deg, var(--ink) var(--fill, 0%), var(--line-strong) var(--fill, 0%)); cursor: pointer; }
 .range::-webkit-slider-thumb { appearance: none; width: 11px; height: 11px; border-radius: var(--radius-round); background: var(--ink); }
 .range::-moz-range-thumb { width: 11px; height: 11px; border: 0; border-radius: var(--radius-round); background: var(--ink); }
 .range:disabled { opacity: .4; cursor: default; }
