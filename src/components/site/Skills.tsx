@@ -36,11 +36,16 @@ export function Skills() {
     field.current?.show(new Set(filterSkills(site.skills, tab).map((s) => s.name)));
   }, [tab]);
 
+  /** Arrow keys step (wrapping); Home and End jump to the first and last tab. */
   const onTabKey = (e: React.KeyboardEvent, i: number) => {
-    const d = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
-    if (!d) return;
+    const n =
+      e.key === "Home" ? 0
+      : e.key === "End" ? TABS.length - 1
+      : e.key === "ArrowRight" ? move(i, 1, TABS.length)
+      : e.key === "ArrowLeft" ? move(i, -1, TABS.length)
+      : -1;
+    if (n < 0) return;
     e.preventDefault();
-    const n = move(i, d, TABS.length);
     setTab(TABS[n]);
     tabRefs.current[n]?.focus();
   };

@@ -26,6 +26,8 @@ export function ContactForm({ email }: { email: string }) {
     const found = validate(values);
     setErrors(found);
     if (Object.keys(found).length) {
+      const first = (["name", "email", "message"] as const).find((key) => found[key]);
+      if (first) (form.elements.namedItem(first) as HTMLElement | null)?.focus();
       setStatus("Please fix the highlighted fields.");
       return;
     }
