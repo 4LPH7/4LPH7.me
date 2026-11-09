@@ -107,7 +107,7 @@ body { overflow-x: clip; }
 .terminal-bar i:nth-child(3) { background: var(--success); }
 .terminal-body { padding: var(--space-4); font: 13px/1.85 var(--font-mono); }
 .terminal-ok { color: var(--terminal-ink); }
-.terminal-wait { color: var(--accent); }
+.terminal-wait { color: var(--terminal-accent); }
 .terminal-dim { color: var(--terminal-dim); }
 .terminal-caret { display: inline-block; width: 7px; height: 1em; margin-left: var(--space-1); vertical-align: -2px; background: var(--terminal-ink); animation: blink 1s steps(1) infinite; }
 @keyframes blink { 50% { opacity: 0; } }

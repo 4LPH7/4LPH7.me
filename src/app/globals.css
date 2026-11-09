@@ -70,8 +70,8 @@ button {
 
 .skip-link {
   z-index: var(--z-skip);
-  background: var(--accent);
-  color: var(--on-accent);
+  background: var(--inverse);
+  color: var(--on-inverse);
   padding: .75rem 1rem;
   position: fixed;
   top: 1rem;

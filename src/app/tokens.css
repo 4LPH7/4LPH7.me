@@ -121,6 +121,7 @@
   --deck-groove-2: #1d1d21;
   --deck-spindle: #0c0c0e;
   --deck-cue-bg: #0b0b0db3;
+  --deck-cue-ink: #ffffff80;
   --foot-top: #0b0d14;
   --foot-bottom: #050506;
 }
@@ -131,6 +132,7 @@
   --deck-stage-mid: #e6ebf4;
   --deck-stage-low: #dde4ef;
   --deck-cue-bg: #ffffffcc;
+  --deck-cue-ink: #0b122080;
   --foot-top: #ffffff;
   --foot-bottom: #eef2fa;
 }
@@ -206,4 +208,8 @@
 }
 :root[data-theme="light"] {
   --shadow-card-hover: 0 18px 40px -24px #1d4ed855;
+}
+
+:root {
+  --terminal-accent: #60a5fa;
 }
