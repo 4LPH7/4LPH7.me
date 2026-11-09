@@ -45,7 +45,7 @@ export default function ResumePage() {
         </div>
       </section>
       {github && <section className="resume-section"><h2>Links</h2><p><a className="text-link" href={github} target="_blank" rel="noreferrer">GitHub profile ↗</a></p></section>}
-      <Link className="button-secondary" href="/">← Back to portfolio</Link>
+      <Link className="btn btn-outline" href="/">← Back to portfolio</Link>
     </main>
   );
 }

@@ -1,3 +1,5 @@
+import { refreshSkillTokens } from "./skillsDraw";
+import { cssVar } from "@/lib/theme";
 import { burst, hit, repel } from "@/lib/bubbles";
 import { type Blob, jiggle, makeBlob, shapeFoam, stepFoam } from "@/lib/foam";
 import { type Drop, type Ripple, drawBubble, drawChip, drawDrops, drawPull, drawRipples, tintOf } from "./skillsDraw";
@@ -101,7 +103,7 @@ export function createSkillField(host: HTMLElement, cv: HTMLCanvasElement, skill
     for (let s = 0; s < 300; s++) shapeFoam(blobs, 1 / 60, w, h);
   };
 
-  const ring = (x: number, y: number, from: number, to: number, color = "#60a5fa", life = 600) =>
+  const ring = (x: number, y: number, from: number, to: number, color = cssVar("--accent-strong"), life = 600) =>
     ripples.push({ x, y, at: performance.now(), from, to, life, color });
 
   const pop = (i: number) => {
@@ -145,7 +147,7 @@ export function createSkillField(host: HTMLElement, cv: HTMLCanvasElement, skill
     if (focus >= 0) bubble(focus);
     drawRipples(ctx, ripples, now);
     drawDrops(ctx, drops, dt);
-    if (hover >= 0 && held < 0) drawChip(ctx, blobs[hover], cats[hover].toUpperCase(), light, chip);
+    if (hover >= 0 && held < 0) drawChip(ctx, blobs[hover], cats[hover].toUpperCase(), chip);
   };
 
   /** Hover target, swell, focus fade and chip; eased by `k` (1 = jump straight there). */
@@ -255,7 +257,7 @@ export function createSkillField(host: HTMLElement, cv: HTMLCanvasElement, skill
         const charge = Math.min(1, (dur - HOLD_MS) / CHARGE_MS);
         burst(blobs, press.x, press.y, 800 + charge * 2600, 220 + charge * 220);
         for (const b of blobs) if (Math.hypot(b.x - press.x, b.y - press.y) < 260) jiggle(b, 150 + charge * 250);
-        ring(press.x, press.y, 20, 180 + charge * 260, "#93c5fd", 800);
+        ring(press.x, press.y, 20, 180 + charge * 260, cssVar("--accent-strong"), 800);
       }
       press = null;
     }
@@ -277,7 +279,7 @@ export function createSkillField(host: HTMLElement, cv: HTMLCanvasElement, skill
     if (reduced) { settleStatic(); redraw(); }
   });
   ro.observe(host);
-  const mo = new MutationObserver(() => { light = document.documentElement.dataset.theme === "light"; if (reduced) redraw(); });
+  const mo = new MutationObserver(() => { light = document.documentElement.dataset.theme === "light"; refreshSkillTokens(); if (reduced) redraw(); });
   mo.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
   const io = new IntersectionObserver(([entry]) => {
     visible = entry.isIntersecting;

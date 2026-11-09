@@ -63,7 +63,7 @@ export function Contact() {
         <div ref={orb} className="orb">
           {three ? <div className="orb-3d"><BlobScene pointer={pointer} active={active} /></div> : <span className="orb-static" />}
         </div>
-        <p className="hint">MOVE YOUR CURSOR · WATCH IT RESPOND</p>
+        <p className="eyebrow eyebrow-center">MOVE YOUR CURSOR · WATCH IT RESPOND</p>
       </div>
     </section>
   );

@@ -40,14 +40,14 @@ html {
 body {
   background: var(--bg);
   color: var(--ink);
-  font: 16px/1.6 var(--text);
+  font: 16px/1.6 var(--font-sans);
   -webkit-font-smoothing: antialiased;
   margin: 0;
 }
 
 ::selection {
   background: var(--accent);
-  color: var(--accent-ink);
+  color: var(--on-accent);
 }
 
 a {
@@ -64,14 +64,14 @@ button {
 }
 
 :focus-visible {
-  outline: 3px solid var(--focus);
+  outline: 3px solid var(--accent);
   outline-offset: 4px;
 }
 
 .skip-link {
-  z-index: 100;
-  background: var(--accent);
-  color: var(--accent-ink);
+  z-index: var(--z-skip);
+  background: var(--inverse);
+  color: var(--on-inverse);
   padding: .75rem 1rem;
   position: fixed;
   top: 1rem;
@@ -89,43 +89,12 @@ button {
 }
 
 .brand {
-  font: 700 1.15rem var(--mono);
+  font: 700 1.15rem var(--font-mono);
   letter-spacing: -.06em;
   white-space: nowrap;
 }
 
 .brand span {
-  color: var(--accent);
-}
-
-.button-primary, .button-secondary {
-  border: 1px solid var(--accent);
-  justify-content: center;
-  align-items: center;
-  gap: .6rem;
-  min-height: 48px;
-  padding: .7rem 1rem;
-  font-weight: 600;
-  transition: background .18s, color .18s, transform .18s;
-  display: inline-flex;
-}
-
-.button-primary {
-  background: var(--accent);
-  color: var(--accent-ink);
-}
-
-.button-primary:hover {
-  background: var(--accent-strong);
-  transform: translateY(-2px);
-}
-
-.button-secondary {
-  color: var(--ink);
-}
-
-.button-secondary:hover {
-  background: var(--surface-raised);
   color: var(--accent);
 }
 
@@ -172,7 +141,7 @@ button {
 }
 
 .resume-page .hero-copy {
-  color: var(--muted);
+  color: var(--ink-soft);
   font-size: 1.2rem;
 }
 
@@ -187,7 +156,7 @@ button {
 }
 
 .resume-page .resume-section p {
-  color: var(--muted);
+  color: var(--ink-soft);
 }
 
 .resume-page .resume-skills-grid {
@@ -204,12 +173,12 @@ button {
 .resume-page .resume-skills-grid h3 {
   color: var(--accent);
   font-size: .85rem;
-  font-family: var(--mono);
+  font-family: var(--font-mono);
   margin: 0 0 .5rem;
 }
 
 .resume-page .resume-skills-grid p {
-  color: var(--muted);
+  color: var(--ink-soft);
   margin: 0;
   font-size: .85rem;
 }
@@ -227,7 +196,7 @@ button {
 
 .resume-page .resume-experience-year {
   color: var(--accent);
-  font: 600 1rem var(--mono);
+  font: 600 1rem var(--font-mono);
   letter-spacing: .02em;
 }
 
@@ -237,7 +206,7 @@ button {
 }
 
 .resume-page .resume-experience-context {
-  color: var(--muted);
+  color: var(--ink-soft);
   font-size: .85rem;
   line-height: 1.6;
 }
@@ -252,7 +221,7 @@ button {
 
 .not-found-page p {
   max-width: 450px;
-  color: var(--muted);
+  color: var(--ink-soft);
   font-size: 1.1rem;
 }
 
@@ -269,8 +238,6 @@ button {
 @media (width <= 680px) {
   :root {
     --page-gutter: 20px;
-    --header-height: 68px;
-    --section-space: 4.5rem;
   }
 
   .site-shell {
@@ -297,7 +264,7 @@ button {
 }
 
 [data-reveal-state] {
-  transition: opacity .7s cubic-bezier(.2, .8, .2, 1), transform .7s cubic-bezier(.2, .8, .2, 1);
+  transition: opacity var(--dur-slow) cubic-bezier(.2, .8, .2, 1), transform var(--dur-slow) cubic-bezier(.2, .8, .2, 1);
   transition-delay: var(--reveal-delay, 0s);
 }
 

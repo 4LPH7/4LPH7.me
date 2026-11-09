@@ -13,3 +13,7 @@ Thumbs.db
 
 # Claude Code local settings
 .claude/settings.local.json
+
+# Source models (the optimised copies in public/models are what ship)
+/ironman.glb
+/arc_reactor_ironman.glb

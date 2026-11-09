@@ -1,4 +1,5 @@
 "use client";
+import { themeColor } from "@/lib/theme";
 
 import { HERO } from "@/app/fonts";
 import TechText from "@/components/reactbits/TechText/TechText";
@@ -15,7 +16,7 @@ export function HeroName({ text }: { text: string }) {
         fontWeight={400}
         fontSize={110}
         letterSpacing={0.04}
-        accentColor="#3b82f6"
+        accentColor={themeColor("--accent")}
         reveal="letter"
         dashLength={4}
         dashGap={2}

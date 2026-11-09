@@ -1,4 +1,5 @@
 "use client";
+import { cssVar } from "@/lib/theme";
 
 import { useEffect, useRef } from "react";
 import { SOUTH_INDIA, WORLD } from "@/data/worldMap";
@@ -39,8 +40,12 @@ export function LocationMap() {
     let h = 0;
     let dpr = 1;
     let light = false;
-    let accent = "#3b82f6";
-    let dim = "#a1a1aa";
+    let accent = "";
+    let landColor = "";
+    let waterColor = "";
+    let inkColor = "";
+    let inverseColor = "";
+    let dim = "";
     const map = { x: 0, y: 0, w: 0, h: 0 };
     const lens = { cx: 0, cy: 0, r: 0 };
     const view = { zoom: 0, zoomTo: 0, ox: 0, oy: 0, oxTo: 0, oyTo: 0 };
@@ -53,8 +58,12 @@ export function LocationMap() {
     const theme = () => {
       light = document.documentElement.dataset.theme === "light";
       const cs = getComputedStyle(document.documentElement);
-      accent = cs.getPropertyValue("--accent").trim() || "#3b82f6";
-      dim = cs.getPropertyValue("--dim").trim() || dim;
+      accent = cssVar("--accent", cs) || accent;
+      landColor = cssVar("--map-land", cs);
+      waterColor = cssVar("--map-water", cs);
+      inkColor = cssVar("--map-ink", cs);
+      inverseColor = cssVar("--map-ink-inverse", cs);
+      dim = cs.getPropertyValue("--ink-dim").trim() || dim;
     };
 
     /** The world's dots never change for a given size and theme, so they are drawn once into a cache. */
@@ -64,7 +73,7 @@ export function LocationMap() {
       wx.setTransform(dpr, 0, 0, dpr, 0, 0);
       const step = Math.max(1, Math.min(6, Math.round(360 / (map.w / 3.4))));
       const gap = (map.w / 360) * step;
-      wx.fillStyle = light ? "#b8c4d6" : "#4b4b55";
+      wx.fillStyle = landColor;
       wx.beginPath();
       for (let r = 0; r + step <= WORLD.rows; r += step)
         for (let c = 0; c + step <= WORLD.cols; c += step) {
@@ -151,7 +160,7 @@ export function LocationMap() {
       for (let g = Math.ceil((latC - S) / 2) * 2; g <= latC + S; g += 2) { const p = at(0, g); lx.beginPath(); lx.moveTo(0, p.y); lx.lineTo(r * 2, p.y); lx.stroke(); }
       const sp = SOUTH_INDIA.step * k;
       const groups: [number, number][][] = [[], [], []];
-      lx.fillStyle = light ? "#a8b6cc" : "#62626e";
+      lx.fillStyle = waterColor;
       lx.beginPath();
       for (let row = 0; row < SOUTH_INDIA.rows; row++)
         for (let c = 0; c < SOUTH_INDIA.cols; c++) {
@@ -295,9 +304,9 @@ export function LocationMap() {
         ctx.stroke();
         ctx.beginPath();
         ctx.roundRect(cx - tw / 2, cy - 10, tw, 20, 10);
-        ctx.fillStyle = light ? "#0b1220" : "#f4f4f5";
+        ctx.fillStyle = inkColor;
         ctx.fill();
-        ctx.fillStyle = light ? "#f4f4f5" : "#09090b";
+        ctx.fillStyle = inverseColor;
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
         ctx.fillText(text, cx, cy + 0.5);

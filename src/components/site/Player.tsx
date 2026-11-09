@@ -335,11 +335,11 @@ export function Player() {
         </div>
         <div className="deck-ctl">
           <button type="button" onClick={() => go(-1)} aria-label="Previous track"><SkipBack size={16} aria-hidden="true" /></button>
-          <button type="button" className="deck-play" onClick={toggle} aria-label={playing ? "Pause" : "Play"}>{playing ? <Pause size={17} aria-hidden="true" /> : <Play size={17} aria-hidden="true" />}</button>
+          <button type="button" className="deck-play" onClick={toggle} aria-label="Play" aria-pressed={playing}>{playing ? <Pause size={17} aria-hidden="true" /> : <Play size={17} aria-hidden="true" />}</button>
           <button type="button" onClick={() => go(1)} aria-label="Next track"><SkipForward size={16} aria-hidden="true" /></button>
           <button type="button" onClick={() => setMuted((m) => !m)} aria-pressed={muted} aria-label="Mute">{muted ? <VolumeX size={16} aria-hidden="true" /> : <Volume2 size={16} aria-hidden="true" />}</button>
           <input
-            className="range deck-vol" type="range" aria-label="Volume" min={0} max={1} step={0.05} value={muted ? 0 : volume}
+            className="range deck-vol" type="range" aria-label="Volume" aria-valuetext={`${Math.round((muted ? 0 : volume) * 100)}%`} min={0} max={1} step={0.05} value={muted ? 0 : volume}
             style={{ "--fill": `${(muted ? 0 : volume) * 100}%` } as React.CSSProperties}
             onChange={(e) => { const v = Number(e.target.value); setVolume(v); setMuted(v === 0); if (audio.current) audio.current.volume = v; }}
           />
@@ -348,7 +348,7 @@ export function Player() {
       <div className="deck-seek mono">
         <span>{formatTime(time)}</span>
         <input
-          className="range" type="range" aria-label="Seek" min={0} max={duration || 0} step={1} value={Math.min(time, duration || 0)} disabled={!duration}
+          className="range" type="range" aria-label="Seek" aria-valuetext={`${formatTime(time)} of ${formatTime(duration)}`} min={0} max={duration || 0} step={1} value={Math.min(time, duration || 0)} disabled={!duration}
           style={{ "--fill": `${pct}%` } as React.CSSProperties}
           onChange={(e) => { const t = Number(e.target.value); if (audio.current) audio.current.currentTime = t; setTime(t); }}
         />

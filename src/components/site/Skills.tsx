@@ -36,11 +36,16 @@ export function Skills() {
     field.current?.show(new Set(filterSkills(site.skills, tab).map((s) => s.name)));
   }, [tab]);
 
+  /** Arrow keys step (wrapping); Home and End jump to the first and last tab. */
   const onTabKey = (e: React.KeyboardEvent, i: number) => {
-    const d = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
-    if (!d) return;
+    const n =
+      e.key === "Home" ? 0
+      : e.key === "End" ? TABS.length - 1
+      : e.key === "ArrowRight" ? move(i, 1, TABS.length)
+      : e.key === "ArrowLeft" ? move(i, -1, TABS.length)
+      : -1;
+    if (n < 0) return;
     e.preventDefault();
-    const n = move(i, d, TABS.length);
     setTab(TABS[n]);
     tabRefs.current[n]?.focus();
   };
@@ -55,7 +60,7 @@ export function Skills() {
               key={t}
               ref={(el) => { tabRefs.current[i] = el; }}
               type="button"
-              role="tab"
+              role="tab" className="tab"
               id={`skills-tab-${t}`}
               aria-selected={tab === t}
               aria-controls="skills-panel"
@@ -68,12 +73,12 @@ export function Skills() {
           ))}
         </div>
       </div>
-      <div id="skills-panel" role="tabpanel" aria-labelledby={`skills-tab-${tab}`} className="field card" data-reveal>
+      <div id="skills-panel" role="tabpanel" aria-labelledby={`skills-tab-${tab}`} className="skills-field card" data-reveal>
         <div ref={wrap} className="field-canvas" aria-hidden="true">
           <canvas ref={canvas} />
         </div>
         <ul className="sr-only">{shown.map((s) => <li key={s.name}>{s.name} ({s.category})</li>)}</ul>
-        <p className="hint field-hint"><span className="hint-fine">DRAG · FLICK · HOLD EMPTY SPACE TO PULL · DOUBLE-CLICK TO POP</span><span className="hint-touch">DRAG · HOLD TO PULL · DOUBLE-TAP TO POP</span></p>
+        <p className="eyebrow field-hint"><span className="hint-fine">DRAG · FLICK · HOLD EMPTY SPACE TO PULL · DOUBLE-CLICK TO POP</span><span className="hint-touch">DRAG · HOLD TO PULL · DOUBLE-TAP TO POP</span></p>
       </div>
     </section>
   );

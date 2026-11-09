@@ -21,7 +21,7 @@ Modern, interactive portfolio for **Arul G** (@4LPH7). Built with Next.js 16 sta
 - **Framework:** Next.js 16 (`output: "export"`), React 19, TypeScript 5
 - **3D & Graphics:** Three.js, React Three Fiber, Rapier physics, HTML5 Canvas 2D
 - **Animation & Motion:** GSAP + ScrollTrigger, Lenis smooth scrolling
-- **UI & Typography:** Custom token system (`tokens.css`, `site.css`), Sanchez, Instrument Serif & Unbounded fonts
+- **UI & Typography:** One token set in `src/app/tokens.css` (colours, spacing, radii, z-index, motion, both themes); the site layers its styles on top in `site.css`, `site-sections.css` and `site-widgets.css`. Fonts: Instrument Serif, JetBrains Mono, DM Serif Display and Sanchez (self-hosted through `next/font`); body text uses the system UI font. Design system: see the brand book in the design-system artifact.
 - **Icons:** Lucide React
 - **Forms:** Web3Forms integration with native mailto fallback
 - **Tooling:** Biome (linting & formatting), Node.js native test runner
