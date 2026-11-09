@@ -16,9 +16,14 @@
   --grid-dot: #ffffff17;
   --grid-line: #ffffff0d;
   --offset-shadow: #0a0a0c;
-  --text: "Supreme", ui-sans-serif, system-ui, sans-serif;
-  --serif: var(--font-serif), Georgia, serif;
-  --mono: var(--font-mono), ui-monospace, Consolas, monospace;
+  --font-sans: ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--nf-serif), Georgia, serif;
+  --font-mono: var(--nf-mono), ui-monospace, Consolas, monospace;
+  --font-display: var(--nf-display), var(--nf-serif), Georgia, serif;
+  --text: var(--font-sans);
+  --serif: var(--font-serif);
+  --mono: var(--font-mono);
+  --display: var(--font-display);
   --measure: 1180px;
   --sidebar-width: clamp(120px, 8vw, 180px);
   --sidebar-offset: max(var(--sidebar-width), 9.5vw);
