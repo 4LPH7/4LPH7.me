@@ -1,0 +1,30 @@
+{
+  "v": 3,
+  "layout": "files",
+  "createdOnFiles": { "v": 1, "at": "2026-11-08T12:00:00Z" },
+  "title": "4LPH7 Design System",
+  "namespace": "Lph7",
+  "libraries": [],
+  "sections": {},
+  "groups": ["Logos"],
+  "assetGroups": {
+    "Logos": {
+      "name": "Logos",
+      "tile": "m",
+      "order": ["4lph7-app-icon.svg", "4lph7-mark-white.svg", "4lph7-mark-black.svg"],
+      "files": {
+        "4lph7-app-icon.svg": { "name": "4lph7-app-icon.svg", "blob": "c327cc93370ae3a54962a03123ebac40", "size": 370, "type": "image/svg+xml" },
+        "4lph7-mark-white.svg": { "name": "4lph7-mark-white.svg", "blob": "1369e35318fb00f23645c5282f7a4c72", "size": 273, "type": "image/svg+xml" },
+        "4lph7-mark-black.svg": { "name": "4lph7-mark-black.svg", "blob": "921125c369c66197f8e3ec20fb4b9254", "size": 273, "type": "image/svg+xml" }
+      }
+    }
+  },
+  "blobs": {},
+  "docs": { "sections": [] },
+  "lastChange": {
+    "by": "Arul G",
+    "at": "2026-11-09T12:00:00Z",
+    "via": "Claude Code · 4LPH7/4LPH7.me refactor/design-system-10",
+    "note": "tokens.json and components/bundle.css regenerated from the code (refactor branch, PR #2). Supreme dropped. Previews use the code class names and were rendered against these files."
+  }
+}
