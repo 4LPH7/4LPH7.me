@@ -176,3 +176,25 @@
   --skill-ink-inverse: #f4f4f5;
   --skill-icon-white: #0b1220;
 }
+
+:root {
+  --scene-blob: #040406;
+  --scene-sheen: #3b2a8a;
+  --scene-indigo: #6366f1;
+  --scene-lightformer: #e0e7ff;
+  --scene-card: #08090c;
+  --scene-strap: #111214;
+  --holo-ink: #e2e8f0;
+  --holo-sky: #7dd3fc;
+  --holo-mist: #bae6fd;
+  --holo-muted: #64748b;
+  --holo-white: #f8fafc;
+  --holo-metal: #0d1017;
+  --holo-dim: #0b2530;
+  --holo-shell: #14161d;
+  --holo-teal: #5eead4;
+  --holo-glow: #e0f2fe;
+  --k2so-emissive: #7df9ff;
+  --k2so-eye: #9ff6ff;
+  --robot-ground: #0b1220;
+}

@@ -24,3 +24,8 @@ export function onThemeChange(cb: () => void): () => void {
   observer.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
   return () => observer.disconnect();
 }
+
+/** Token colour for a three.js material or a prop. Server render has no document, so it returns ''. */
+export function themeColor(name: string): string {
+  return typeof document === "undefined" ? "" : cssVar(name);
+}

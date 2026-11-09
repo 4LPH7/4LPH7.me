@@ -1,3 +1,4 @@
+import { themeColor } from "@/lib/theme";
 "use client";
 
 import { useGLTF } from "@react-three/drei";
@@ -80,12 +81,12 @@ function useRig(scene: THREE.Group) {
       mesh.castShadow = true;
       const m = mesh.material as THREE.MeshStandardMaterial;
       if (m.emissiveMap && !glow.some((g) => g.m === m)) {
-        m.emissive.set("#7df9ff"); // cyberpunk cyan instead of white
+        m.emissive.set(themeColor("--k2so-emissive")); // cyberpunk cyan instead of white
         glow.push({ m, base: Math.max(1, m.emissiveIntensity) });
       }
     });
     // Eye glows: sprites kept just in front of each eye bone so the eyes read clearly at card size.
-    const eyeMat = new THREE.SpriteMaterial({ map: glowTexture(), color: "#9ff6ff", blending: THREE.AdditiveBlending, depthWrite: false, toneMapped: false });
+    const eyeMat = new THREE.SpriteMaterial({ map: glowTexture(), color: themeColor("--k2so-eye"), blending: THREE.AdditiveBlending, depthWrite: false, toneMapped: false });
     const eyeGlow = [new THREE.Sprite(eyeMat), new THREE.Sprite(eyeMat)];
     return { ...rig, glow, eyeMat, eyeGlow };
   }, [scene]);

@@ -1,3 +1,4 @@
+import { themeColor } from "@/lib/theme";
 "use client";
 
 import { ContactShadows, useProgress } from "@react-three/drei";
@@ -84,10 +85,10 @@ export default function RobotScene({ input, active }: { input: Input; active: bo
     <>
     <Canvas camera={{ position: [HOME.x, HOME.y, HOME.z], fov: 30 }} dpr={[1, 1.5]} frameloop={active ? "always" : "never"} gl={{ alpha: true, antialias: true }}>
       <ambientLight intensity={0.25} />
-      <hemisphereLight args={["#7dd3fc", "#0b1220", 0.5]} />
+      <hemisphereLight args={[themeColor("--holo-sky"), themeColor("--robot-ground"), 0.5]} />
       <directionalLight position={[2, 5, 6]} intensity={1.4} />
-      <directionalLight position={[-4, 3, -3]} intensity={2.2} color="#3b82f6" />
-      <directionalLight position={[4, 2, -3]} intensity={2.6} color="#22d3ee" />
+      <directionalLight position={[-4, 3, -3]} intensity={2.2} color={themeColor("--accent")} />
+      <directionalLight position={[4, 2, -3]} intensity={2.6} color={themeColor("--holo-cyan")} />
       <Crate />
       <GamingLaptop screen={screen.tex} />
       <HoloPanels heat={heat} screen={screen} />

@@ -1,3 +1,4 @@
+import { themeColor } from "@/lib/theme";
 import * as THREE from "three";
 import { MONO } from "@/app/fonts";
 
@@ -79,7 +80,12 @@ const CODE = [
   ["  ", "shield", ".", "raise", "();"], ["}"], ["for ", "(const ", "pkt", " of ", "stream", ") {"],
   ["  ", "verify", "(pkt.", "sig", ", ", "key", ");"], ["}"], ["export ", "default ", "ship", ";"], ["// TODO: be nicer to humans"],
 ];
-const CODE_COLORS = ["#22d3ee", "#e2e8f0", "#22d3ee", "#7dd3fc", "#e2e8f0", "#bae6fd", "#e2e8f0"];
+const CODE_TOKENS = ["--holo-cyan", "--holo-ink", "--holo-cyan", "--holo-sky", "--holo-ink", "--holo-mist", "--holo-ink"];
+let codeColorCache: string[] | null = null;
+function codeColor(i: number): string {
+  codeColorCache ??= CODE_TOKENS.map(themeColor);
+  return codeColorCache[i];
+}
 
 /** Cyan code hologram scrolling upward. */
 export function codePanel(): Panel {
@@ -97,7 +103,7 @@ export function codePanel(): Panel {
         const parts = CODE[(Math.floor(t * 26 / 30) + i) % CODE.length];
         let x = 22;
         ctx.globalAlpha = parts[0].startsWith("//") ? 0.45 : 0.9;
-        parts.forEach((p, k) => { ctx.fillStyle = parts[0].startsWith("//") ? "#64748b" : CODE_COLORS[k % CODE_COLORS.length]; ctx.fillText(p, x, y); x += ctx.measureText(p).width; });
+        parts.forEach((p, k) => { ctx.fillStyle = parts[0].startsWith("//") ? themeColor("--holo-muted") : codeColor(k % CODE_TOKENS.length); ctx.fillText(p, x, y); x += ctx.measureText(p).width; });
         ctx.globalAlpha = 1;
       }
       c.tex.needsUpdate = true;

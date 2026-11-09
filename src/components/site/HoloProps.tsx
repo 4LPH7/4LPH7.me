@@ -1,3 +1,4 @@
+import { themeColor } from "@/lib/theme";
 "use client";
 
 import { Float } from "@react-three/drei";
@@ -22,8 +23,8 @@ function rogLogo() {
   const draw = () => {
     g.setTransform(1, 0, 0, 1, 0, 0);
     g.clearRect(0, 0, 512, 256);
-    g.fillStyle = "#f8fafc";
-    g.shadowColor = "#7dd3fc";
+    g.fillStyle = themeColor("--holo-white");
+    g.shadowColor = themeColor("--holo-sky");
     g.shadowBlur = 16;
     g.translate(256, 128);
     // upper blade sweeping up to a sharp point on the right
@@ -59,13 +60,13 @@ const LEDS = Array.from({ length: 8 }, (_, n) => ({ id: `led-${n}`, n, at: [-0.3
 /** Dark metal crate the droid sits on: neon edges and blinking server LEDs. */
 export function Crate() {
   const leds = useRef<THREE.Mesh[]>([]);
-  const metal = useMemo(() => new THREE.MeshStandardMaterial({ color: "#0d1017", metalness: 0.7, roughness: 0.38 }), []);
-  const edge = useMemo(() => neon("#22d3ee"), []); // made once: an inline neon() leaked new materials on every re-render
+  const metal = useMemo(() => new THREE.MeshStandardMaterial({ color: themeColor("--holo-metal"), metalness: 0.7, roughness: 0.38 }), []);
+  const edge = useMemo(() => neon(themeColor("--holo-cyan")), []); // made once: an inline neon() leaked new materials on every re-render
   useFrame(({ clock }) => {
     const t = clock.elapsedTime;
     leds.current.forEach((m, i) => {
       const on = Math.sin(t * (2 + (i % 3)) + i * 1.7) > 0.2;
-      (m.material as THREE.MeshBasicMaterial).color.set(on ? (i % 4 === 0 ? "#f8fafc" : "#22d3ee") : "#0b2530");
+      (m.material as THREE.MeshBasicMaterial).color.set(on ? (i % 4 === 0 ? themeColor("--holo-white") : themeColor("--holo-cyan")) : themeColor("--holo-dim"));
     });
   });
   return (
@@ -78,7 +79,7 @@ export function Crate() {
       {LEDS.map((led) => (
         <mesh key={led.id} ref={(m) => { if (m) leds.current[led.n] = m; }} position={led.at}>
           <boxGeometry args={[0.035, 0.02, 0.005]} />
-          <meshBasicMaterial color="#22d3ee" toneMapped={false} />
+          <meshBasicMaterial color={themeColor("--holo-cyan")} toneMapped={false} />
         </mesh>
       ))}
     </group>
@@ -101,9 +102,9 @@ void main() {
 /** Gaming laptop on the droid's lap: RGB keys, RGB-lit lid with a glowing logo, live code facing the droid. */
 export function GamingLaptop({ screen }: { screen: THREE.Texture }) {
   const keys = useMemo(() => new THREE.ShaderMaterial({ uniforms: { uTime: { value: 0 } }, vertexShader: KEYBOARD_VERT, fragmentShader: KEYBOARD_FRAG, toneMapped: false }), []);
-  const rgb = useMemo(() => new THREE.MeshBasicMaterial({ color: "#22d3ee", toneMapped: false }), []);
+  const rgb = useMemo(() => new THREE.MeshBasicMaterial({ color: themeColor("--holo-cyan"), toneMapped: false }), []);
   const logo = useMemo(() => new THREE.MeshBasicMaterial({ map: rogLogo(), transparent: true, depthWrite: false, toneMapped: false }), []);
-  const shell = useMemo(() => new THREE.MeshStandardMaterial({ color: "#14161d", metalness: 0.8, roughness: 0.3 }), []);
+  const shell = useMemo(() => new THREE.MeshStandardMaterial({ color: themeColor("--holo-shell"), metalness: 0.8, roughness: 0.3 }), []);
   useFrame(({ clock }) => {
     keys.uniforms.uTime.value = clock.elapsedTime;
     rgb.color.setHSL(0.53, 0.85, 0.48 + Math.sin(clock.elapsedTime * 1.8) * 0.08);
@@ -121,7 +122,7 @@ export function GamingLaptop({ screen }: { screen: THREE.Texture }) {
         <mesh position={[0, 0.31, -0.0145]} rotation-y={Math.PI}><planeGeometry args={[0.94, 0.54]} /><meshBasicMaterial map={screen} toneMapped={false} /></mesh>
         <mesh material={rgb} position={[0, 0.615, 0.015]}><boxGeometry args={[1.02, 0.01, 0.004]} /></mesh>
         <mesh position={[0, 0.32, 0.0147]} material={logo}><planeGeometry args={[0.46, 0.23]} /></mesh>
-        <pointLight position={[0, 0.3, -0.5]} color="#5eead4" intensity={2.2} distance={3} decay={1.6} />
+        <pointLight position={[0, 0.3, -0.5]} color={themeColor("--holo-teal")} intensity={2.2} distance={3} decay={1.6} />
       </group>
     </group>
   );
@@ -189,7 +190,7 @@ export function Motes({ count = 90 }: { count?: number }) {
     const g = new THREE.BufferGeometry();
     const p = new Float32Array(count * 3);
     const c = new Float32Array(count * 3);
-    const cyan = new THREE.Color("#22d3ee"), white = new THREE.Color("#e0f2fe");
+    const cyan = new THREE.Color(themeColor("--holo-cyan")), white = new THREE.Color(themeColor("--holo-glow"));
     for (let i = 0; i < count; i++) {
       p.set([(Math.random() - 0.5) * 5, Math.random() * 3.6, (Math.random() - 0.5) * 3 - 0.4], i * 3);
       (i % 3 ? cyan : white).toArray(c, i * 3);

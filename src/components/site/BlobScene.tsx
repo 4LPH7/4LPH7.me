@@ -1,3 +1,4 @@
+import { themeColor } from "@/lib/theme";
 "use client";
 
 import { Environment, Lightformer } from "@react-three/drei";
@@ -85,13 +86,13 @@ function Symbiote({ pointer }: { pointer: Pointer }) {
 
   const material = useMemo(() => {
     const m = new THREE.MeshPhysicalMaterial({
-      color: "#040406",
+      color: themeColor("--scene-blob"),
       roughness: 0.22,
       metalness: 0.15,
       clearcoat: 1,
       clearcoatRoughness: 0.06,
       sheen: 0,
-      sheenColor: new THREE.Color("#3b2a8a"),
+      sheenColor: new THREE.Color(themeColor("--scene-sheen")),
       sheenRoughness: 0.35,
     });
     m.onBeforeCompile = (shader) => {
@@ -163,13 +164,13 @@ export default function BlobScene({ pointer, active }: { pointer: Pointer; activ
   return (
     <Canvas camera={{ position: [0, 0, 4.2], fov: 40 }} dpr={[1, 1.5]} frameloop={active ? "always" : "never"} gl={{ alpha: true, antialias: true }}>
       <ambientLight intensity={0.15} />
-      <directionalLight position={[-2, 3, 4]} intensity={1.6} color="#ffffff" />
-      <pointLight position={[2.5, -1.5, 2]} intensity={1.2} color="#6366f1" />
+      <directionalLight position={[-2, 3, 4]} intensity={1.6} color={themeColor("--paper")} />
+      <pointLight position={[2.5, -1.5, 2]} intensity={1.2} color={themeColor("--scene-indigo")} />
       {/* Built locally (no HDR download): soft light panels that give the wet, oily streaks. */}
       <Environment resolution={256}>
         <Lightformer form="rect" intensity={3} position={[0, 3, 2]} scale={[6, 1, 1]} />
         <Lightformer form="rect" intensity={1.5} position={[-3, 0, 2]} rotation-y={Math.PI / 3} scale={[1, 5, 1]} />
-        <Lightformer form="ring" intensity={1.2} color="#e0e7ff" position={[3, -1, 1]} scale={2} />
+        <Lightformer form="ring" intensity={1.2} color={themeColor("--scene-lightformer")} position={[3, -1, 1]} scale={2} />
       </Environment>
       <Symbiote pointer={pointer} />
       <Precompile />

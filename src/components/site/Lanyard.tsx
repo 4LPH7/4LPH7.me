@@ -1,3 +1,4 @@
+import { themeColor } from "@/lib/theme";
 "use client";
 
 import dynamic from "next/dynamic";
@@ -53,8 +54,8 @@ export function Lanyard() {
           frontImage="/lanyard/card-front.svg"
           backImage="/lanyard/card-back.svg"
           strapImage="/lanyard/band.svg"
-          cardColor="#08090c"
-          strapColor="#111214"
+          cardColor={themeColor("--scene-card")}
+          strapColor={themeColor("--scene-strap")}
           finish="glossy"
           metal="silver"
           // Canvas covers the whole hero, so size is the card's share of hero height.
