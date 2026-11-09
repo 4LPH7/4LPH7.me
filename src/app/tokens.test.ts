@@ -100,7 +100,6 @@ test("every var() resolves to a defined token", () => {
 	// Set at runtime from TSX (element.style), so no CSS declaration exists for them.
 	const SET_FROM_JS = new Set([
 		"--reveal-delay",
-		"--stone",
 		"--deck-cover",
 		"--arm",
 		"--deck-tint",
@@ -116,7 +115,9 @@ test("every var() resolves to a defined token", () => {
 });
 
 test("no tokens defined but unused", () => {
-  const tsSource = sourceFiles(SRC_DIR).map((file) => readFileSync(file, "utf8")).join("\n");
+	const tsSource = sourceFiles(SRC_DIR)
+		.map((file) => readFileSync(file, "utf8"))
+		.join("\n");
 	const css = cssFiles(APP_DIR)
 		.map((f) => readFileSync(f, "utf8"))
 		.join("\n");
