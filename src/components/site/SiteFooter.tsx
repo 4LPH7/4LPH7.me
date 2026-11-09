@@ -14,7 +14,7 @@ export function SiteFooter() {
         <div className="foot-glow" aria-hidden="true" />
         <div className="foot-top">
           <div className="foot-copy">
-            <p className="chip"><i aria-hidden="true" />{footer.chip}</p>
+            <p className="chip chip-mono"><i aria-hidden="true" />{footer.chip}</p>
             <p className="foot-head">{footer.plain} <em>{footer.italic}</em></p>
             <p className="foot-blurb">{footer.blurb}</p>
             <a className="foot-mail" href={`mailto:${site.email}`}>{site.email} <ArrowUpRight size={14} aria-hidden="true" /></a>

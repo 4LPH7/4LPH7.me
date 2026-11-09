@@ -19,20 +19,14 @@ body { overflow-x: clip; }
 :root.theme-fade, :root.theme-fade * { transition: background-color .4s ease, color .4s ease, border-color .4s ease, fill .4s ease !important; }
 
 /* shared */
-.eyebrow { font: 500 10px/1.4 var(--font-mono); letter-spacing: .32em; text-transform: uppercase; color: var(--ink-dim); }
 .card { background: var(--surface); border: 1px solid var(--line); border-radius: 24px; }
 .lede { color: var(--ink-soft); max-width: 46ch; margin-top: 1.25rem; }
-.hint { font: 500 10px var(--font-mono); letter-spacing: .32em; color: var(--ink-dim); text-align: center; text-transform: uppercase; }
 .hint-touch { display: none; }
 @media (hover: none), (pointer: coarse) { .hint-touch { display: inline; } .hint-fine { display: none; } }
 .icon-btn { display: inline-grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line); color: var(--ink-soft); transition: color .2s, border-color .2s, background .2s, transform .2s var(--ease-out); }
 .icon-btn:hover { color: var(--ink); border-color: var(--ink-soft); transform: translateY(-2px); }
 .icon-btn-lg { width: 56px; height: 56px; }
 .icon-row { display: flex; gap: 8px; }
-.tags { display: flex; flex-wrap: wrap; gap: 8px; }
-.tags li { padding: 5px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface-raised); font-size: 12px; font-weight: 500; }
-.pill-status { display: inline-flex; align-items: center; gap: 7px; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface-raised); font-size: 11px; font-weight: 500; }
-.pill-status i, .chip i { width: 8px; height: 8px; border-radius: 50%; background: var(--success); box-shadow: 0 0 10px var(--success); animation: pulse 2s infinite; }
 @keyframes pulse { 50% { opacity: .45; } }
 /* Set by RevealOnScroll on sections out of view: a running loop there still costs a style + layer pass every frame. */
 [data-offscreen] *, [data-offscreen] *::before, [data-offscreen] *::after { animation-play-state: paused !important; }
@@ -50,9 +44,6 @@ body { overflow-x: clip; }
 .nav-brand { display: grid; place-items: center; width: 34px; height: 34px; color: var(--ink); }
 .brand-mark { fill: currentColor; }
 .nav-actions { display: flex; align-items: center; gap: 22px; }
-.tt { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line); background: color-mix(in srgb, var(--bg) 70%, transparent); backdrop-filter: blur(8px); color: var(--ink); transition: transform .3s var(--ease-out); }
-.tt:hover { transform: rotate(-20deg); }
-.tt:active { transform: scale(.9); }
 .tt-icon { display: grid; place-items: center; animation: tt-spin .6s var(--ease-out); }
 @keyframes tt-spin { from { transform: rotate(-120deg) scale(.4); opacity: 0; } }
 .nav-toggle { display: flex; align-items: center; gap: 6px; font-weight: 500; color: var(--ink); position: relative; z-index: 2; }
@@ -149,7 +140,7 @@ body { overflow-x: clip; }
 }
 @media (prefers-reduced-motion: reduce) {
   .hero-lead, .hero-term { animation: none; opacity: 1; }
-  .badge-ring, .term-caret, .pill-status i, .chip i, .tt-icon { animation: none; }
+  .badge-ring, .term-caret, .tt-icon { animation: none; }
   .menu-layer, .menu-panel, .menu-links a, .menu-socials, .menu-scrim { transition: none; }
 }
 
@@ -192,3 +183,19 @@ body { overflow-x: clip; }
 .btn-inverse .btn-dot { background: var(--accent-strong); }
 .btn:disabled, .btn[aria-disabled="true"] { opacity: .5; cursor: not-allowed; }
 .btn[aria-busy="true"] { cursor: progress; }
+
+/* Eyebrow / hint: the one mono uppercase label (11px, .3em). */
+.eyebrow { margin: 0; color: var(--ink-dim); font: 500 11px/1.4 var(--font-mono); letter-spacing: .3em; text-transform: uppercase; }
+.eyebrow-center { text-align: center; }
+/* Tag: pill label. Tag list wraps tags. */
+.tag-list { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: 0; padding: 0; list-style: none; }
+.tag { display: inline-block; padding: 5px var(--space-3); border-radius: var(--radius-pill); border: 1px solid var(--line); background: var(--surface-raised); color: var(--ink); font: 500 12px/1.5 var(--font-sans); }
+/* Chip: a status pill. chip-success = green dot; chip-mono = mono label. */
+.chip { display: inline-flex; align-items: center; gap: var(--space-2); padding: 6px var(--space-3); border-radius: var(--radius-pill); border: 1px solid var(--line); background: var(--surface-raised); color: var(--ink); font: 500 12px/1.4 var(--font-sans); }
+.chip-mono { font: 500 11px/1.4 var(--font-mono); letter-spacing: .3em; text-transform: uppercase; }
+.chip i { width: 8px; height: 8px; border-radius: var(--radius-round); background: var(--accent); box-shadow: 0 0 8px var(--accent); animation: pulse 2s infinite; }
+.chip-success i { background: var(--success); box-shadow: 0 0 10px var(--success); }
+/* Glass icon button for the header (theme toggle). */
+.icon-btn-glass { color: var(--ink); background: color-mix(in srgb, var(--bg) 70%, transparent); backdrop-filter: blur(8px); }
+.icon-btn-glass:hover { transform: rotate(-20deg); }
+.icon-btn-glass:active { transform: scale(.9); }

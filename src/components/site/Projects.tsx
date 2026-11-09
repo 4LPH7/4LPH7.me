@@ -114,7 +114,7 @@ export function Projects() {
             <p className="pcard-slug mono">/{p.id}</p>
             <h3 className="pcard-title">{p.title}</h3>
             <p className="pcard-summary">{p.summary}</p>
-            <ul className="tags">{p.tags.map((t) => <li key={t}>{t}</li>)}</ul>
+            <ul className="tag-list">{p.tags.map((t) => <li key={t} className="tag">{t}</li>)}</ul>
           </div>
           <div className="pcard-foot">
             <div className="pcard-nav">
@@ -134,7 +134,7 @@ export function Projects() {
           </div>
         </div>
       </div>
-      <p className="hint"><span className="hint-fine">HOVER OR CLICK A PROJECT · USE ← →</span><span className="hint-touch">TAP A PROJECT · OR SWIPE</span></p>
+      <p className="eyebrow"><span className="hint-fine">HOVER OR CLICK A PROJECT · USE ← →</span><span className="hint-touch">TAP A PROJECT · OR SWIPE</span></p>
     </section>
   );
 }

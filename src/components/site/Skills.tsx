@@ -73,7 +73,7 @@ export function Skills() {
           <canvas ref={canvas} />
         </div>
         <ul className="sr-only">{shown.map((s) => <li key={s.name}>{s.name} ({s.category})</li>)}</ul>
-        <p className="hint field-hint"><span className="hint-fine">DRAG · FLICK · HOLD EMPTY SPACE TO PULL · DOUBLE-CLICK TO POP</span><span className="hint-touch">DRAG · HOLD TO PULL · DOUBLE-TAP TO POP</span></p>
+        <p className="eyebrow field-hint"><span className="hint-fine">DRAG · FLICK · HOLD EMPTY SPACE TO PULL · DOUBLE-CLICK TO POP</span><span className="hint-touch">DRAG · HOLD TO PULL · DOUBLE-TAP TO POP</span></p>
       </div>
     </section>
   );

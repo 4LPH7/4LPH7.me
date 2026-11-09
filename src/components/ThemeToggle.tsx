@@ -64,7 +64,7 @@ export function ThemeToggle() {
 
   const label = theme === "dark" ? "Switch to light theme" : "Switch to dark theme";
   return (
-    <button className="tt" type="button" onClick={toggle} aria-label={label} title={label}>
+    <button className="icon-btn icon-btn-glass" type="button" onClick={toggle} aria-label={label} title={label}>
       {/* keyed so the icon spins in each time it changes */}
       <span key={theme} className="tt-icon">
         {theme === "dark" ? <Moon size={18} strokeWidth={1.75} aria-hidden="true" /> : <Sun size={18} strokeWidth={1.75} aria-hidden="true" />}

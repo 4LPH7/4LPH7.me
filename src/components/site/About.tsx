@@ -65,7 +65,7 @@ export function About() {
         <article className="profile" data-reveal aria-label="Profile">
           <div className="profile-top">
             <p className="profile-name">{first} <span>{rest.join(" ")}</span></p>
-            <p className="pill-status"><i aria-hidden="true" />{site.availability}</p>
+            <p className="chip chip-success"><i aria-hidden="true" />{site.availability}</p>
           </div>
           <p className="profile-meta">
             <MapPin size={14} aria-hidden="true" /> {site.location}

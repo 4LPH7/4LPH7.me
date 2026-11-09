@@ -98,8 +98,21 @@ test("every var() resolves to a defined token", () => {
 	]);
 	const used = [...all.matchAll(/var\((--[\w-]+)/g)].map((m) => m[1]);
 	// Set at runtime from TSX (element.style), so no CSS declaration exists for them.
-const SET_FROM_JS = new Set(["--reveal-delay", "--lean", "--x", "--deck-cover", "--arm", "--deck-tint", "--fill", "--i"]);
-const missing = [...new Set(used.filter((name) => !defined.has(name) && !SET_FROM_JS.has(name)))];
+	const SET_FROM_JS = new Set([
+		"--reveal-delay",
+		"--lean",
+		"--x",
+		"--deck-cover",
+		"--arm",
+		"--deck-tint",
+		"--fill",
+		"--i",
+	]);
+	const missing = [
+		...new Set(
+			used.filter((name) => !defined.has(name) && !SET_FROM_JS.has(name)),
+		),
+	];
 	assert.deepEqual(missing, []);
 });
 

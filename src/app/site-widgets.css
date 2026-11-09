@@ -132,8 +132,6 @@
 :root[data-theme="light"] .foot-panel { background: linear-gradient(160deg, #fff, #eef2fa); }
 .foot-glow { position: absolute; left: -10%; bottom: -20%; width: 60%; height: 70%; background: radial-gradient(#1e3a8a55, transparent 70%); pointer-events: none; }
 .foot-top { position: relative; display: flex; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
-.chip { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 99px; border: 1px solid var(--line); background: var(--surface-raised); font: 500 10px var(--font-mono); letter-spacing: .3em; }
-.chip i { background: var(--accent); box-shadow: 0 0 8px var(--accent); }
 .foot-head { margin-top: 24px; max-width: 18ch; font: 400 clamp(1.8rem, 3vw, 2.6rem)/1.1 var(--font-serif); }
 .foot-head em { color: var(--ink-dim); }
 .foot-blurb { margin-top: 16px; max-width: 42ch; color: var(--ink-dim); font-size: 14px; line-height: 1.9; }
