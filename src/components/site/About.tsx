@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { site } from "@/data/site";
 import { formatClock } from "@/lib/clock";
 import { revealedCount, splitWords } from "@/lib/reveal";
-import { Robot } from "./Robot";
+import { IronMan } from "./IronMan";
 import { SectionHeading } from "./SectionHeading";
 
 const words = splitWords(site.about.story).map((text, id) => ({ id, text }));
@@ -72,7 +72,7 @@ export function About() {
             <span aria-hidden="true">·</span>
             <Clock />
           </p>
-          <div className="profile-art"><Robot /></div>
+          <div className="profile-art"><IronMan /></div>
           <div className="profile-foot">
             <ul className="icon-row">
               {site.socials.filter((s) => s.href).map((s) => {

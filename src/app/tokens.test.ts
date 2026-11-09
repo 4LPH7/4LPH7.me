@@ -100,8 +100,7 @@ test("every var() resolves to a defined token", () => {
 	// Set at runtime from TSX (element.style), so no CSS declaration exists for them.
 	const SET_FROM_JS = new Set([
 		"--reveal-delay",
-		"--lean",
-		"--x",
+		"--stone",
 		"--deck-cover",
 		"--arm",
 		"--deck-tint",

@@ -7,6 +7,7 @@ import { RevealOnScroll } from "@/components/site/RevealOnScroll";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteMenu } from "@/components/site/SiteMenu";
 import { Skills } from "@/components/site/Skills";
+import { SnapOverlay } from "@/components/site/SnapOverlay";
 import { Stats } from "@/components/site/Stats";
 
 export default function HomePage() {
@@ -24,6 +25,7 @@ export default function HomePage() {
         <Contact />
       </main>
       <SiteFooter />
+      <SnapOverlay />
     </>
   );
 }

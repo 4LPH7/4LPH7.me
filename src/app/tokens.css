@@ -97,7 +97,6 @@
   --shade: #000000;
   --paper: #ffffff;
   --hero-glow: #1e3a8a66;
-  --holo-cyan: #22d3ee;
   --orb-indigo: #3730a3;
   --orb-violet: #4f46e5;
   --orb-core: #12122a;
@@ -106,9 +105,6 @@
   --orb-static-hi: #6b6b80;
   --orb-static-mid: #16161f;
   --orb-static-dark: #050507;
-  --robot-glow: #0c1a2a;
-  --robot-bg: #070b14;
-  --robot-bg-deep: #040508;
   --lan-strap: #27272a;
   --lan-card: #e9e9e6;
   --arm-hi: #d4d4d8;
@@ -188,19 +184,6 @@
   --scene-lightformer: #e0e7ff;
   --scene-card: #08090c;
   --scene-strap: #111214;
-  --holo-ink: #e2e8f0;
-  --holo-sky: #7dd3fc;
-  --holo-mist: #bae6fd;
-  --holo-muted: #64748b;
-  --holo-white: #f8fafc;
-  --holo-metal: #0d1017;
-  --holo-dim: #0b2530;
-  --holo-shell: #14161d;
-  --holo-teal: #5eead4;
-  --holo-glow: #e0f2fe;
-  --k2so-emissive: #7df9ff;
-  --k2so-eye: #9ff6ff;
-  --robot-ground: #0b1220;
 }
 
 :root {
@@ -212,4 +195,22 @@
 
 :root {
   --terminal-accent: #60a5fa;
+}
+
+/* Iron Man snap scene: the six stones, embers and the smoky battlefield. Same in both themes (it's a film still). */
+:root {
+  --stone-space: #38bdf8;
+  --stone-reality: #ef4444;
+  --stone-power: #a855f7;
+  --stone-mind: #facc15;
+  --stone-time: #22c55e;
+  --stone-soul: #f97316;
+  --arc-reactor: #e0f2fe;
+  --ember: #f59e0b;
+  --ember-hot: #fde68a;
+  --snap-sky: #1c140a;
+  --snap-haze: #6b4a1c;
+  --snap-smoke: #3a3024;
+  --snap-ground: #0d0906;
+  --z-fx: 90;
 }

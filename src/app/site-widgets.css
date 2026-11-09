@@ -179,8 +179,7 @@
   .foot-meta { flex-direction: column-reverse; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .deck-record, .orb-static, .mascot-float { animation: none; }
-  .mascot-lean { transition: none; }
+  .deck-record, .orb-static { animation: none; }
   .flip-inner, .deck-arm, .pcard-slide { transition: none; animation: none; }
 }
 

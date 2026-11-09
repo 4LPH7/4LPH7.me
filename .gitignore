@@ -13,3 +13,6 @@ Thumbs.db
 
 # Claude Code local settings
 .claude/settings.local.json
+
+# Source model for public/models/ironman.glb (68 MB; the optimised copy is what ships)
+/ironman.glb
