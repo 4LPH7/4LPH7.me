@@ -26,7 +26,8 @@
 .reactor-css i:nth-child(1) { inset: 0; border: 6px solid var(--reactor-deep); box-shadow: 0 0 24px var(--reactor-glow), inset 0 0 18px var(--reactor-glow); }
 .reactor-css i:nth-child(2) { inset: 22%; border: 3px solid var(--reactor-glow); box-shadow: 0 0 18px var(--reactor-glow); }
 .reactor-css i:nth-child(3) { inset: 38%; background: var(--arc-reactor); box-shadow: 0 0 22px var(--reactor-glow), 0 0 48px var(--reactor-glow); }
-.reactor-static[data-surge="true"] .reactor-css i:nth-child(3) { box-shadow: 0 0 34px var(--reactor-glow), 0 0 80px var(--reactor-glow); }
+.reactor-css i { transition: opacity var(--dur-slow), box-shadow var(--dur-slow); }
+.reactor-static[data-power="off"] .reactor-css i { opacity: .25; box-shadow: none; }
 .profile-foot { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); padding-top: var(--space-5); border-top: 1px solid var(--line); }
 .profile-mail { display: inline-flex; align-items: center; gap: var(--space-2); font-size: 14px; color: var(--ink-soft); }
 .profile-mail:hover { color: var(--ink); }
