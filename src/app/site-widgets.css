@@ -106,7 +106,7 @@
 .cform-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); }
 .cform-foot { display: flex; align-items: center; gap: var(--space-4); flex-wrap: wrap; margin-top: var(--space-2); }
 .cform-status { font-size: 13px; color: var(--ink-soft); }
-.orb-wrap { display: grid; justify-items: center; gap: var(--space-8); }
+.orb-wrap { display: grid; justify-items: center; gap: var(--space-8); overflow-x: clip; }
 .orb { position: relative; width: min(340px, 80vw); aspect-ratio: 1; border-radius: var(--radius-round); background: radial-gradient(circle at 50% 50%, var(--orb-core) 0%, var(--orb-edge) 55%, var(--orb-deep) 100%); box-shadow: 0 0 120px 24px color-mix(in srgb, var(--orb-indigo) 27%, transparent), inset 0 0 50px color-mix(in srgb, var(--orb-violet) 20%, transparent); overflow: visible; }
 .orb-3d { position: absolute; inset: -22%; }
 .orb-static { position: absolute; inset: 25%; border-radius: 42% 58% 55% 45%; background: radial-gradient(circle at 35% 28%, var(--orb-static-hi) 0%, var(--orb-static-mid) 22%, var(--orb-static-dark) 60%), var(--orb-static-dark); box-shadow: inset -10px -14px 30px color-mix(in srgb, var(--orb-violet) 27%, transparent), 0 0 40px color-mix(in srgb, var(--orb-indigo) 33%, transparent); animation: morph 6s ease-in-out infinite; }
@@ -143,7 +143,7 @@
 @media (max-width: 900px) {
   .about { grid-template-columns: 1fr; }
   .profile { position: relative; top: 0; min-height: 460px; }
-  .projects-body { grid-template-columns: 1fr; }
+  .projects-body { grid-template-columns: minmax(0, 1fr); }
   .plist { flex-direction: row; gap: var(--space-2); overflow-x: auto; scrollbar-width: none; padding-bottom: var(--space-1); }
   .plist li { flex: none; border: 0; }
   .plist button { display: block; padding: var(--space-2) var(--space-4); min-height: 0; border-radius: var(--radius-2xl); border: 1px solid var(--line); white-space: nowrap; }

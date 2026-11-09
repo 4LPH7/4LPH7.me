@@ -54,7 +54,7 @@ body { overflow-x: clip; }
 .nav-toggle[data-open="true"] .nav-toggle-icon { transform: rotate(225deg); }
 
 /* staggered menu */
-.menu { position: fixed; inset: 0; z-index: var(--z-menu); pointer-events: none; }
+.menu { position: fixed; inset: 0; overflow: hidden; z-index: var(--z-menu); pointer-events: none; }
 .menu[data-open="true"] { pointer-events: auto; }
 .menu-scrim { position: absolute; inset: 0; width: 100%; background: var(--scrim); backdrop-filter: blur(6px); opacity: 0; transition: opacity var(--dur-slow); cursor: default; }
 .menu[data-open="true"] .menu-scrim { opacity: 1; }
