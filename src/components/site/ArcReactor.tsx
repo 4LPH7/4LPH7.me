@@ -8,20 +8,20 @@ import type { ReactorInput } from "./ArcReactorScene";
 const ArcReactorScene = dynamic(() => import("./ArcReactorScene"), { ssr: false });
 
 /**
- * Tony Stark's arc reactor floating under a warm spot from above, the core glowing blue. It boots itself the first time
- * it shows (flicker, ignition flash and shockwave, a sweep of light around the coils); clicking (or Enter/Space) powers
- * it down to a faint ember and back up. It bobs and sways; drag to turn it. Three.js and the model load only when the
+ * Tony Stark's arc reactor on a steel stand in a glass display case. It starts switched off (a faint ember); clicking
+ * (or Enter/Space) powers it up (flicker, ignition flash, a crackling electric discharge, a sweep of light around the
+ * coils) and back down. It turns slowly on the spot; drag to turn it. Three.js and the model load only when the
  * card is near the viewport. Devices that can't run 3D (or prefer reduced motion) get a glowing reactor drawn in CSS.
  */
 export function ArcReactor() {
   const box = useRef<HTMLButtonElement>(null);
-  const input = useRef<ReactorInput>({ x: 0, y: 0, hover: false, yaw: 0, dragging: false, on: true, changedAt: 0 });
+  const input = useRef<ReactorInput>({ x: 0, y: 0, hover: false, yaw: 0, dragging: false, on: false, changedAt: 0 });
   const drag = useRef<{ sx: number; x: number } | null>(null);
   const dragged = useRef(false); // the last press was a drag, so its click shouldn't switch the power
   const [mode, setMode] = useState<"pending" | "3d" | "static">("pending");
   const [active, setActive] = useState(false);
   const [near, setNear] = useState(false);
-  const [on, setOn] = useState(true);
+  const [on, setOn] = useState(false);
 
   useEffect(() => {
     const nav = navigator as Navigator & { deviceMemory?: number; connection?: { saveData?: boolean } };
@@ -90,7 +90,7 @@ export function ArcReactor() {
         ref={box}
         type="button"
         className={mode === "static" ? "reactor reactor-static" : "reactor"}
-        aria-label="Arc reactor power, floating under a spotlight (drag to turn it)"
+        aria-label="Arc reactor power, in a glass display case (drag to turn it)"
         aria-pressed={on}
         data-power={on ? "on" : "off"}
         onPointerEnter={() => { input.current.hover = true; }}

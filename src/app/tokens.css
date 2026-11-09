@@ -197,7 +197,7 @@
   --terminal-accent: #60a5fa;
 }
 
-/* Arc reactor showcase: a dark display studio with a warm spot from above. Same in both themes. */
+/* Arc reactor showcase: a glass display case on a metal plinth in a dark room. Same in both themes. */
 :root {
   --arc-reactor: #e0f2fe;
   --reactor-glow: #38bdf8;
@@ -205,4 +205,6 @@
   --showcase-spot: #fff4e0;
   --showcase-wall: #15171c;
   --showcase-floor: #07080a;
+  --showcase-glass: #a5f3fc;
+  --showcase-metal: #c4c8ce;
 }
