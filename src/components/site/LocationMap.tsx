@@ -1,5 +1,5 @@
-import { cssVar } from "@/lib/theme";
 "use client";
+import { cssVar } from "@/lib/theme";
 
 import { useEffect, useRef } from "react";
 import { SOUTH_INDIA, WORLD } from "@/data/worldMap";

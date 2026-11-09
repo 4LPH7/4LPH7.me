@@ -1,5 +1,5 @@
-import { themeColor } from "@/lib/theme";
 "use client";
+import { themeColor } from "@/lib/theme";
 
 import { HERO } from "@/app/fonts";
 import TechText from "@/components/reactbits/TechText/TechText";

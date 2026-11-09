@@ -1,5 +1,5 @@
-import { themeColor } from "@/lib/theme";
 "use client";
+import { themeColor } from "@/lib/theme";
 
 import { useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";

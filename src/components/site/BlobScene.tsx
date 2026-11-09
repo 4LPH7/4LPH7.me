@@ -1,5 +1,5 @@
-import { themeColor } from "@/lib/theme";
 "use client";
+import { themeColor } from "@/lib/theme";
 
 import { Environment, Lightformer } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";

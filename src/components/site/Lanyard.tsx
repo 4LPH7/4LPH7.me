@@ -1,5 +1,5 @@
-import { themeColor } from "@/lib/theme";
 "use client";
+import { themeColor } from "@/lib/theme";
 
 import dynamic from "next/dynamic";
 import { useEffect, useRef, useState } from "react";
