@@ -207,3 +207,12 @@ body { overflow-x: clip; }
 .tab[aria-selected="true"] { background: var(--inverse); color: var(--on-inverse); }
 .tab sup { font: 11px var(--font-mono); color: var(--ink-dim); margin-left: 3px; vertical-align: super; }
 .tab[aria-selected="true"] sup { color: inherit; opacity: .6; }
+
+/* Form field: label-less wrapper, bordered input, error line. Focus = accent border + focus halo. */
+.field { display: grid; gap: var(--space-1); }
+.input { box-sizing: border-box; width: 100%; padding: var(--space-4); border-radius: var(--radius-md); border: 1px solid var(--line-strong); background: var(--surface-raised); color: var(--ink); font: 14px/1.5 var(--font-sans); resize: vertical; transition: border-color var(--dur-fast), box-shadow var(--dur-fast); }
+.input::placeholder { color: var(--ink-dim); }
+.input:focus { outline: none; border-color: var(--accent); box-shadow: var(--shadow-focus); }
+.input[aria-invalid="true"] { border-color: var(--danger); }
+.input:disabled { opacity: .5; cursor: not-allowed; }
+.field-error { margin: 0; color: var(--danger); font-size: 12px; line-height: 1.5; }

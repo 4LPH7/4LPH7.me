@@ -4,6 +4,7 @@
   --surface: #121214;
   --surface-raised: #18181b;
   --line: #ffffff14;
+  --line-strong: #ffffff66;
   --ink: #ffffff;
   --ink-soft: #a1a1aa;
   --ink-dim: #8a8a94;
@@ -79,6 +80,7 @@
   --surface: #ffffff;
   --surface-raised: #eef2fa;
   --line: #0b12201a;
+  --line-strong: #0b122080;
   --ink: #0b1220;
   --ink-soft: #52607a;
   --ink-dim: #5b6b82;

@@ -52,25 +52,25 @@ export function ContactForm({ email }: { email: string }) {
   }
 
   const field = (id: keyof Contact) => ({ "aria-invalid": Boolean(errors[id]) || undefined, "aria-describedby": errors[id] ? `contact-${id}-err` : undefined });
-  const err = (id: keyof Contact) => (errors[id] ? <p className="cform-err" id={`contact-${id}-err`}>{errors[id]}</p> : null);
+  const err = (id: keyof Contact) => (errors[id] ? <p className="field-error" id={`contact-${id}-err`}>{errors[id]}</p> : null);
 
   return (
     <form className="cform" onSubmit={handleSubmit} noValidate>
       <div className="cform-row">
-        <div className="cform-field">
+        <div className="field">
           <label className="sr-only" htmlFor="contact-name">Your name</label>
-          <input id="contact-name" name="name" placeholder="Your name" autoComplete="name" required maxLength={120} {...field("name")} />
+          <input className="input" id="contact-name" name="name" placeholder="Your name" autoComplete="name" required maxLength={120} {...field("name")} />
           {err("name")}
         </div>
-        <div className="cform-field">
+        <div className="field">
           <label className="sr-only" htmlFor="contact-email">Email address</label>
-          <input id="contact-email" name="email" type="email" placeholder="Email address" autoComplete="email" required maxLength={254} {...field("email")} />
+          <input className="input" id="contact-email" name="email" type="email" placeholder="Email address" autoComplete="email" required maxLength={254} {...field("email")} />
           {err("email")}
         </div>
       </div>
-      <div className="cform-field">
+      <div className="field">
         <label className="sr-only" htmlFor="contact-message">Your message</label>
-        <textarea id="contact-message" name="message" placeholder="Tell me about your project…" rows={4} required maxLength={5000} {...field("message")} />
+        <textarea className="input" id="contact-message" name="message" placeholder="Tell me about your project…" rows={4} required maxLength={5000} {...field("message")} />
         {err("message")}
       </div>
       <div className="cform-foot">

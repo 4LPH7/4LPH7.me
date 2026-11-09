@@ -68,7 +68,7 @@ export function Skills() {
           ))}
         </div>
       </div>
-      <div id="skills-panel" role="tabpanel" aria-labelledby={`skills-tab-${tab}`} className="field card" data-reveal>
+      <div id="skills-panel" role="tabpanel" aria-labelledby={`skills-tab-${tab}`} className="skills-field card" data-reveal>
         <div ref={wrap} className="field-canvas" aria-hidden="true">
           <canvas ref={canvas} />
         </div>
