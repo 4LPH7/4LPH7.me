@@ -104,16 +104,16 @@ body { overflow-x: clip; }
 .hero-lead em { font: italic 1.1em var(--font-serif); color: var(--ink); }
 @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
 .hero-term { position: absolute; left: 0; right: 0; margin-inline: auto; bottom: 0; width: min(576px, calc(100% - 24px)); z-index: 2; opacity: 0; animation: rise 1s 1.8s var(--ease-out) forwards; }
-.term { background: #000; border: 1px solid #ffffff26; border-bottom: 0; border-radius: 12px 12px 0 0; color: #fff; min-height: 170px; box-shadow: 0 -20px 60px -30px #3b82f655; }
-.term-bar { display: flex; gap: 8px; padding: 12px 12px; border-bottom: 1px solid #ffffff1f; }
-.term-bar i { width: 12px; height: 12px; border-radius: 50%; background: #ef4444; }
-.term-bar i:nth-child(2) { background: #eab308; }
-.term-bar i:nth-child(3) { background: #22c55e; }
-.term-body { padding: 16px; font: 13px/1.85 var(--font-mono); }
-.term-ok { color: #fff; }
-.term-wait { color: var(--accent); }
-.term-dim { color: #a1a1aa; }
-.term-caret { display: inline-block; width: 7px; height: 1em; margin-left: 2px; vertical-align: -2px; background: #fff; animation: blink 1s steps(1) infinite; }
+.terminal { background: #000; border: 1px solid #ffffff26; border-bottom: 0; border-radius: 12px 12px 0 0; color: #fff; min-height: 170px; box-shadow: 0 -20px 60px -30px #3b82f655; }
+.terminal-bar { display: flex; gap: 8px; padding: 12px 12px; border-bottom: 1px solid #ffffff1f; }
+.terminal-bar i { width: 12px; height: 12px; border-radius: 50%; background: #ef4444; }
+.terminal-bar i:nth-child(2) { background: #eab308; }
+.terminal-bar i:nth-child(3) { background: #22c55e; }
+.terminal-body { padding: 16px; font: 13px/1.85 var(--font-mono); }
+.terminal-ok { color: #fff; }
+.terminal-wait { color: var(--accent); }
+.terminal-dim { color: #a1a1aa; }
+.terminal-caret { display: inline-block; width: 7px; height: 1em; margin-left: 2px; vertical-align: -2px; background: #fff; animation: blink 1s steps(1) infinite; }
 @keyframes blink { 50% { opacity: 0; } }
 .badge { position: absolute; right: clamp(16px, 3vw, 44px); bottom: 36px; z-index: 3; width: 128px; height: 128px; display: grid; place-items: center; border-radius: 50%; border: 1px solid var(--line); background: color-mix(in srgb, var(--bg) 60%, transparent); backdrop-filter: blur(6px); }
 .badge-ring { position: absolute; inset: 4px; animation: spin 14s linear infinite; }
@@ -131,8 +131,8 @@ body { overflow-x: clip; }
   .hero .lan-static { width: 64vw; margin-left: 0; height: 50%; }
   .hero-wordmark { width: min(460px, 88vw); height: clamp(60px, 14vw, 88px); }
   .hero-term { width: calc(100% - 24px); }
-  .term { min-height: 150px; }
-  .term-body { font-size: 12px; }
+  .terminal { min-height: 150px; }
+  .terminal-body { font-size: 12px; }
   .badge { width: 84px; height: 84px; bottom: 118px; right: 12px; }
   .badge-core { width: 40px; height: 40px; }
   .badge-ring text { font-size: 11px; }
@@ -140,7 +140,7 @@ body { overflow-x: clip; }
 }
 @media (prefers-reduced-motion: reduce) {
   .hero-lead, .hero-term { animation: none; opacity: 1; }
-  .badge-ring, .term-caret, .tt-icon { animation: none; }
+  .badge-ring, .terminal-caret, .tt-icon { animation: none; }
   .menu-layer, .menu-panel, .menu-links a, .menu-socials, .menu-scrim { transition: none; }
 }
 

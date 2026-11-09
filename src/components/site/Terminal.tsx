@@ -43,19 +43,19 @@ export function Terminal({ prompt, lines, delay = 900 }: { prompt: string; lines
 
   const done = line >= lines.length;
   return (
-    <div ref={box} className="term" role="img" aria-label={`Terminal: ${lines.join(". ")}`}>
-      <div className="term-bar" aria-hidden="true"><i /><i /><i /></div>
-      <div className="term-body" aria-hidden="true">
+    <div ref={box} className="terminal" role="img" aria-label={`Terminal: ${lines.join(". ")}`}>
+      <div className="terminal-bar" aria-hidden="true"><i /><i /><i /></div>
+      <div className="terminal-body" aria-hidden="true">
         <p>{prompt}</p>
         {lines.map((text, i) => {
           if (i > line) return null;
           const typed = i < line ? text : text.slice(0, chars);
           const last = i === lines.length - 1;
           return (
-            <p key={text} className={last ? "term-dim" : undefined}>
-              {!last && i < line ? <span className="term-ok">✓ </span> : !last ? <span className="term-ok term-wait">› </span> : null}
+            <p key={text} className={last ? "terminal-dim" : undefined}>
+              {!last && i < line ? <span className="terminal-ok">✓ </span> : !last ? <span className="terminal-ok terminal-wait">› </span> : null}
               {typed}
-              {i === line && !done ? <span className="term-caret" /> : null}
+              {i === line && !done ? <span className="terminal-caret" /> : null}
             </p>
           );
         })}
