@@ -199,3 +199,11 @@ body { overflow-x: clip; }
 .icon-btn-glass { color: var(--ink); background: color-mix(in srgb, var(--bg) 70%, transparent); backdrop-filter: blur(8px); }
 .icon-btn-glass:hover { transform: rotate(-20deg); }
 .icon-btn-glass:active { transform: scale(.9); }
+
+/* Tabs: a row of pill tabs. Selected = inverse pill; hover lifts the label. */
+.tabs { display: flex; flex-wrap: wrap; gap: var(--space-1); }
+.tab { padding: var(--space-2) var(--space-3); border: 0; border-radius: var(--radius-pill); background: none; color: var(--ink-soft); font: 400 14px/1.4 var(--font-sans); cursor: pointer; transition: background var(--dur-fast), color var(--dur-fast); }
+.tab:hover { color: var(--ink); background: var(--surface-raised); }
+.tab[aria-selected="true"] { background: var(--inverse); color: var(--on-inverse); }
+.tab sup { font: 11px var(--font-mono); color: var(--ink-dim); margin-left: 3px; vertical-align: super; }
+.tab[aria-selected="true"] sup { color: inherit; opacity: .6; }

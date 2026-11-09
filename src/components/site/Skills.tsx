@@ -55,7 +55,7 @@ export function Skills() {
               key={t}
               ref={(el) => { tabRefs.current[i] = el; }}
               type="button"
-              role="tab"
+              role="tab" className="tab"
               id={`skills-tab-${t}`}
               aria-selected={tab === t}
               aria-controls="skills-panel"
