@@ -32,11 +32,11 @@ body { overflow-x: clip; }
 [data-offscreen] *, [data-offscreen] *::before, [data-offscreen] *::after { animation-play-state: paused !important; }
 
 /* section heading */
-.sh-eyebrow { display: flex; align-items: center; gap: 14px; font: 500 10px var(--font-mono); letter-spacing: .32em; color: var(--ink-dim); }
-.sh-num { color: var(--accent); font-weight: 700; letter-spacing: .1em; }
-.sh-rule { width: 32px; height: 1px; background: var(--ink-dim); opacity: .6; }
-.sh-title { margin-top: 10px; font: 400 clamp(2.6rem, 5.4vw, 4.6rem)/1 var(--font-serif); letter-spacing: -.02em; }
-.sh-title em { color: var(--ink-dim); font-style: italic; }
+.section-heading-eyebrow { display: flex; align-items: center; gap: 14px; font: 500 10px var(--font-mono); letter-spacing: .32em; color: var(--ink-dim); }
+.section-heading-num { color: var(--accent); font-weight: 700; letter-spacing: .1em; }
+.section-heading-rule { width: 32px; height: 1px; background: var(--ink-dim); opacity: .6; }
+.section-heading-title { margin-top: 10px; font: 400 clamp(2.6rem, 5.4vw, 4.6rem)/1 var(--font-serif); letter-spacing: -.02em; }
+.section-heading-title em { color: var(--ink-dim); font-style: italic; }
 
 /* header */
 .nav { position: fixed; z-index: 60; inset: 0 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 14px clamp(16px, 1.6vw, 24px); pointer-events: none; }
