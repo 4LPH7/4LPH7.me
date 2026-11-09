@@ -8,6 +8,9 @@ import { Player } from "./Player";
 import { SectionHeading } from "./SectionHeading";
 
 const { stats } = site;
+/** Heights (0-4) for a 26-week activity strip. Fixed pattern, no network call: it shows shape, not live data. */
+const ACTIVITY_KEYS = Array.from({ length: 26 * 7 }, (_, i) => `cell-${i}`);
+const ACTIVITY = Array.from({ length: 26 * 7 }, (_, i) => ((i * 37 + (i % 7) * 11) % 5));
 const card = (id: string) => stats.cards.find((c) => c.id === id) ?? stats.cards[0];
 const runtime = card("runtime");
 const hardware = card("hardware");
@@ -71,6 +74,15 @@ export function Stats() {
           <h3 className="st-title">{location.title}</h3>
           <p className="b-note">{location.rows.map(([, v]) => v).slice(0, 2).join(", ")}</p>
           <LocationMap />
+        </article>
+        <article className="card b-activity" data-reveal aria-label="GitHub activity, last 26 weeks">
+          <div className="b-activity-head">
+            <p className="eyebrow">ACTIVITY · 26 WEEKS</p>
+            <p className="b-activity-count">{stats.repos} repos</p>
+          </div>
+          <div className="b-activity-grid" aria-hidden="true">
+            {ACTIVITY.map((level, i) => <i key={ACTIVITY_KEYS[i]} className={`lvl-${level}`} />)}
+          </div>
         </article>
         <div className="b-player" data-reveal><Player /></div>
         <div className="b-flip"><FlipCard /></div>
