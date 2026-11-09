@@ -98,37 +98,6 @@ button {
   color: var(--accent);
 }
 
-.button-primary, .button-secondary {
-  border: 1px solid var(--accent);
-  justify-content: center;
-  align-items: center;
-  gap: .6rem;
-  min-height: 48px;
-  padding: .7rem 1rem;
-  font-weight: 600;
-  transition: background .18s, color .18s, transform .18s;
-  display: inline-flex;
-}
-
-.button-primary {
-  background: var(--accent);
-  color: var(--on-accent);
-}
-
-.button-primary:hover {
-  background: var(--accent-strong);
-  transform: translateY(-2px);
-}
-
-.button-secondary {
-  color: var(--ink);
-}
-
-.button-secondary:hover {
-  background: var(--surface-raised);
-  color: var(--accent);
-}
-
 .resume-page h2, .not-found-page h2 {
   letter-spacing: -.065em;
   max-width: 16ch;

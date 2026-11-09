@@ -127,9 +127,9 @@ export function Projects() {
               </div>
             </div>
             {p.repoUrl ? (
-              <a className="btn-light" href={p.repoUrl} target="_blank" rel="noreferrer">Open project <ArrowUpRight size={15} aria-hidden="true" /></a>
+              <a className="btn btn-inverse" href={p.repoUrl} target="_blank" rel="noreferrer">Open project <ArrowUpRight size={15} aria-hidden="true" /></a>
             ) : (
-              <span className="btn-ghost" aria-disabled="true">Repo coming soon</span>
+              <span className="btn btn-ghost">Repo coming soon</span>
             )}
           </div>
         </div>

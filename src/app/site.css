@@ -29,12 +29,6 @@ body { overflow-x: clip; }
 .icon-btn:hover { color: var(--ink); border-color: var(--ink-soft); transform: translateY(-2px); }
 .icon-btn-lg { width: 56px; height: 56px; }
 .icon-row { display: flex; gap: 8px; }
-.btn-light { display: inline-flex; align-items: center; gap: 8px; padding: 11px 20px; border-radius: 999px; background: #fff; color: #09090b; font-weight: 500; font-size: 14px; transition: transform .25s var(--ease-out), box-shadow .25s; white-space: nowrap; }
-.btn-light:hover { transform: translateY(-2px); box-shadow: 0 10px 30px -10px #3b82f6aa; }
-.btn-light:disabled { opacity: .6; }
-:root[data-theme="light"] .btn-light { background: #0b1220; color: #fff; }
-.btn-light > i { width: 7px; height: 7px; border-radius: 50%; background: #1d4ed8; }
-.btn-ghost { display: inline-flex; padding: 11px 20px; border-radius: 999px; border: 1px dashed var(--line); color: var(--ink-dim); font-size: 14px; }
 .tags { display: flex; flex-wrap: wrap; gap: 8px; }
 .tags li { padding: 5px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface-raised); font-size: 12px; font-weight: 500; }
 .pill-status { display: inline-flex; align-items: center; gap: 7px; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface-raised); font-size: 11px; font-weight: 500; }
@@ -184,3 +178,17 @@ body { overflow-x: clip; }
 :root[data-theme="light"] .loader { filter: blur(4px) contrast(10) invert(1); }
 @keyframes l13 { 100% { background-position: 50% -20px, -20px 50%, 60px 50%, 50% 60px, 50%, 50%, 50%; } }
 @media (prefers-reduced-motion: reduce) { .loader { animation: none; } }
+
+/* Button: one base, three variants (inverse, outline, ghost).
+   States: hover lifts (not when disabled), :focus-visible (global ring), disabled, busy (aria-busy).
+   Colour and radius come from tokens only. */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2); min-height: 44px; padding: 0 var(--space-5); border-radius: var(--radius-pill); border: 1px solid transparent; background: none; color: var(--ink); font: 500 14px/1 var(--font-sans); white-space: nowrap; text-decoration: none; cursor: pointer; transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base), background var(--dur-fast), color var(--dur-fast), border-color var(--dur-fast); }
+.btn-inverse { background: var(--inverse); color: var(--on-inverse); }
+.btn-inverse:hover:not(:disabled, [aria-disabled="true"]) { transform: translateY(-2px); box-shadow: var(--shadow-lift); }
+.btn-outline { border-color: var(--line); color: var(--ink); }
+.btn-outline:hover:not(:disabled, [aria-disabled="true"]) { border-color: var(--ink-soft); background: var(--surface-raised); }
+.btn-ghost { border: 1px dashed var(--line); color: var(--ink-dim); cursor: default; }
+.btn-dot { width: 7px; height: 7px; border-radius: var(--radius-round); background: var(--accent); }
+.btn-inverse .btn-dot { background: var(--accent-strong); }
+.btn:disabled, .btn[aria-disabled="true"] { opacity: .5; cursor: not-allowed; }
+.btn[aria-busy="true"] { cursor: progress; }

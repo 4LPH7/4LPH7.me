@@ -124,7 +124,7 @@ export function About() {
             <h3>Got a problem worth <em>solving?</em></h3>
             <p>Open to roles, freelance work and collaborations.</p>
           </div>
-          <a className="btn-light" href="#contact"><i aria-hidden="true" />CONNECT WITH ME</a>
+          <a className="btn btn-inverse" href="#contact"><i aria-hidden="true" />CONNECT WITH ME</a>
         </div>
       </div>
     </section>

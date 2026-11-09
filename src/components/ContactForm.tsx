@@ -74,7 +74,7 @@ export function ContactForm({ email }: { email: string }) {
         {err("message")}
       </div>
       <div className="cform-foot">
-        <button className="btn-light" type="submit" disabled={sending}>
+        <button className="btn btn-inverse" type="submit" disabled={sending} aria-busy={sending}>
           {sending ? "Sending…" : target ? "Send message" : "Prepare email"} <Send size={15} aria-hidden="true" />
         </button>
         <p className="cform-status" role="status" aria-live="polite">{status}</p>
